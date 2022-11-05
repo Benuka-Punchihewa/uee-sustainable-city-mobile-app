@@ -1,6 +1,7 @@
 import { StatusBar, StyleSheet, View } from "react-native";
 import Login from "./screens/auth/Login";
 import Register from "./screens/auth/Register";
+import Donations from "./screens/Donations";
 import Home from "./screens/Home";
 import ForgetPassword from "./screens/auth/ForgetPassword";
 import Splash from "./screens/MainHome";
@@ -15,6 +16,7 @@ export default function App() {
       {/* <Register /> */}
       {/* <ForgetPassword /> */}
       <Splash />
+      <Donations />
     </View>
   );
 }
