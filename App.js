@@ -1,13 +1,12 @@
 import { StatusBar, StyleSheet, View } from "react-native";
 import Donations from "./screens/Donations";
+import DonationForm from "./screens/DonationForm";
 import Home from "./screens/Home";
-
-const language = "SIN";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Donations />
+      <DonationForm />
     </View>
   );
 }
