@@ -1,4 +1,5 @@
 import { StatusBar, StyleSheet, View } from "react-native";
+import Events from "./screens/Events";
 import Donations from "./screens/Donations";
 import Home from "./screens/Home";
 
@@ -7,7 +8,7 @@ const language = "SIN";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Donations />
+      <Events />
     </View>
   );
 }

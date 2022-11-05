@@ -1,3 +1,4 @@
+import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
 import ProgressBar from "react-native-progress/Bar";
 import constants from "../constants";
@@ -5,7 +6,7 @@ import languageDonationCard from "../language/language.donationCard";
 
 const language = "SIN";
 
-const DonationCard = () => {
+const EventCard = () => {
   return (
     <View style={styles.container}>
       <View style={styles.imgContainer}>
@@ -21,31 +22,28 @@ const DonationCard = () => {
           Let's Get Together And Clean Unawatuna Let's Get Together And Clean
           Unawatuna
         </Text>
+
         <Text style={styles.daysLeft}>
           {language === constants.LANGUAGES.ENGLISH ? (
-            <> 2 Days Left</>
+            <>On 12th Oct 2022</>
           ) : (
-            <>දින 2 ඉතිරිව ඇත</>
+            <>2022 ඔක්‌තෝබර් 12 වැනිදා</>
           )}
         </Text>
-        <View style={styles.goalContainer}>
-          <Text style={styles.daysLeft}>
-            {languageDonationCard.RUPEES[language]}
-            {(2000000).toLocaleString()}
-          </Text>
-          <View style={styles.progressContainer}>
-            <View style={styles.progressBarContainer}>
-              <ProgressBar
-                progress={0.5}
-                width={null}
-                color={"#000"}
-                unfilledColor={"#fff"}
-                borderWidth={0}
-              />
-            </View>
-            <Text style={styles.progressPercentage}>87%</Text>
-          </View>
-        </View>
+        <Text style={styles.daysLeft}>
+          {language === constants.LANGUAGES.ENGLISH ? (
+            <>At Viharamahadewi Park</>
+          ) : (
+            <>ස්ථානය Viharamahadewi Park</>
+          )}
+        </Text>
+        <Text style={styles.participate}>
+          {language === constants.LANGUAGES.ENGLISH ? (
+            <>20 People Participating</>
+          ) : (
+            <>20 දෙනෙකු සහභාගී වේ</>
+          )}
+        </Text>
       </View>
     </View>
   );
@@ -99,6 +97,10 @@ const styles = StyleSheet.create({
     fontSize: 11,
     paddingLeft: 5,
   },
+  participate: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
 });
 
-export default DonationCard;
+export default EventCard;
