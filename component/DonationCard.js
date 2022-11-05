@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     width: "100%",
     borderTopLeftRadius: 32,
     borderBottomRightRadius: 32,
+    marginBottom: 10,
   },
   imgContainer: {
     flex: 2,
