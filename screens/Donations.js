@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import DonationCard from "../component/DonationCard";
+import DonationThreadCard from "../component/DonationThreadCard";
 import Search from "../component/Search";
 import languageDonation from "../language/language.donation";
 
@@ -23,7 +23,7 @@ const Donations = () => {
         style={styles.donationsContainer}
         showsVerticalScrollIndicator={false}
       >
-        <DonationCard
+        <DonationThreadCard
           imageURI={
             "http://www.greenschools.net/img/pic/Zero-Waste-School-Events-thumbnail.jpg"
           }
@@ -32,7 +32,7 @@ const Donations = () => {
           collected={2000000}
           progress={0.87}
         />
-        <DonationCard
+        <DonationThreadCard
           imageURI={
             "http://www.greenschools.net/img/pic/Zero-Waste-School-Events-thumbnail.jpg"
           }
