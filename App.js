@@ -2,11 +2,10 @@ import { StatusBar, StyleSheet, View } from "react-native";
 import Login from "./screens/auth/Login";
 import Register from "./screens/auth/Register";
 import Donations from "./screens/Donations";
+import DonationForm from "./screens/DonationForm";
 import Home from "./screens/Home";
 import ForgetPassword from "./screens/auth/ForgetPassword";
 import MainView from "./screens/MainView";
-
-const language = "SIN";
 
 export default function App() {
   return (
@@ -17,6 +16,7 @@ export default function App() {
       {/* <ForgetPassword /> */}
       {/* <MainView /> */}
       <Donations />
+      <DonationForm />
     </View>
   );
 }

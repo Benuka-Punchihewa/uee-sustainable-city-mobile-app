@@ -2,14 +2,14 @@ import { useState } from "react";
 import { View, StyleSheet, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-const Search = ({ onSearch }) => {
+const Search = ({ placeholder, onSearch }) => {
   const [value, setValue] = useState("");
 
   return (
     <View style={styles.searchSection}>
       <TextInput
         style={styles.input}
-        placeholder="Search Donations"
+        placeholder={placeholder}
         selectionColor={"#000"}
         onSubmitEditing={() => onSearch(value)}
         onChangeText={(val) => setValue(val)}
