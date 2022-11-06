@@ -4,11 +4,12 @@ import DonationThreadForm from "./screens/DonationThreadForm";
 import Home from "./screens/Home";
 import DonationMain from "./screens/DonationMain";
 import DonationForm from "./screens/DonationForm";
+import Profile from "./screens/Profile";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <DonationForm />
+      <Profile />
     </View>
   );
 }
