@@ -5,7 +5,7 @@ import languageMainHome from '../language/language.MainHome';
 const language = "SIN";
 
 //Splash screen
-const MainHome = ({ navigation }) =>{
+const MainView = ({ navigation }) =>{
 
     return(
         <View style={styles.container}>
@@ -97,4 +97,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MainHome;
+export default MainView;

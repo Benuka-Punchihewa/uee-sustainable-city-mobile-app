@@ -4,7 +4,7 @@ import Register from "./screens/auth/Register";
 import Donations from "./screens/Donations";
 import Home from "./screens/Home";
 import ForgetPassword from "./screens/auth/ForgetPassword";
-import Splash from "./screens/MainHome";
+import MainView from "./screens/MainView";
 
 const language = "SIN";
 
@@ -15,7 +15,7 @@ export default function App() {
       {/* <Login /> */}
       {/* <Register /> */}
       {/* <ForgetPassword /> */}
-      <Splash />
+      {/* <MainView /> */}
       <Donations />
     </View>
   );
