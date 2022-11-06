@@ -5,45 +5,44 @@ import languageDonationCard from "../language/language.donationCard";
 
 const language = "SIN";
 
-const DonationCard = () => {
+const DonationCard = ({ imageURI, title, daysLeft, collected, progress }) => {
   return (
     <View style={styles.container}>
       <View style={styles.imgContainer}>
         <Image
           source={{
-            uri: "http://www.greenschools.net/img/pic/Zero-Waste-School-Events-thumbnail.jpg",
+            uri: imageURI,
           }}
           style={styles.img}
         />
       </View>
       <View style={styles.detailContainer}>
         <Text numberOfLines={2} style={styles.eventTitle}>
-          Let's Get Together And Clean Unawatuna Let's Get Together And Clean
-          Unawatuna
+          {title}
         </Text>
         <Text style={styles.daysLeft}>
           {language === constants.LANGUAGES.ENGLISH ? (
-            <> 2 Days Left</>
+            <> {daysLeft} Days Left</>
           ) : (
-            <>දින 2 ඉතිරිව ඇත</>
+            <>දින {daysLeft} ඉතිරිව ඇත</>
           )}
         </Text>
         <View style={styles.goalContainer}>
           <Text style={styles.daysLeft}>
             {languageDonationCard.RUPEES[language]}
-            {(2000000).toLocaleString()}
+            {collected.toLocaleString()}
           </Text>
           <View style={styles.progressContainer}>
             <View style={styles.progressBarContainer}>
               <ProgressBar
-                progress={0.5}
+                progress={progress}
                 width={null}
                 color={"#000"}
                 unfilledColor={"#fff"}
                 borderWidth={0}
               />
             </View>
-            <Text style={styles.progressPercentage}>87%</Text>
+            <Text style={styles.progressPercentage}>{progress * 100}%</Text>
           </View>
         </View>
       </View>

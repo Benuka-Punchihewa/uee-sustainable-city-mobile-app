@@ -1,15 +1,14 @@
 import { StatusBar, StyleSheet, View } from "react-native";
 import Events from "./screens/Events";
 import Donations from "./screens/Donations";
+import DonationForm from "./screens/DonationForm";
 import Home from "./screens/Home";
 import EventView from "./screens/EventView";
-
-const language = "SIN";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <EventView />
+      <DonationForm />
     </View>
   );
 }
