@@ -10,10 +10,12 @@ import {
 import DocumentPicker from "react-native-document-picker";
 import languageDonationForm from "../language/language.donationForm";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Button from "../component/Button";
+import CustomButton from "../component/Button";
 import constants from "../constants";
 import { useDimensions } from "@react-native-community/hooks";
 import { useState } from "react";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import moment from "moment";
 
 const language = "SIN";
 
@@ -21,6 +23,23 @@ const DonationForm = () => {
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [targetDate, setTargetDate] = useState(new Date());
+  const [show, setShow] = useState(false);
+  const [target, setTarget] = useState("");
+
+  const onDateChange = (event, selectedDate) => {
+    const currentDate = selectedDate;
+    setShow(false);
+    setTargetDate(currentDate);
+  };
+
+  const showDatepicker = () => {
+    setShow(true);
+  };
+
+  const getFormattedDate = (dateObj) => {
+    return moment(dateObj).format("YYYY-MM-DD");
+  };
 
   const handleImagePickerButtonPress = async () => {
     try {
@@ -45,13 +64,14 @@ const DonationForm = () => {
         style={{
           ...styles.container,
           minHeight:
-            useDimensions().screen.height - StatusBar.currentHeight - 30,
+            useDimensions().screen.height - StatusBar.currentHeight - 10,
         }}
       >
         <Text style={styles.PageTitle}>
           {languageDonationForm.CREATE_DONATION_THREAD[language]}
         </Text>
 
+        {/* Donation Title */}
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>
             {languageDonationForm.TITLE[language]}
@@ -69,6 +89,49 @@ const DonationForm = () => {
           </View>
         </View>
 
+        {/* Target*/}
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>
+            {languageDonationForm.GOAL[language]}
+          </Text>
+          <View style={styles.txtInputContainer}>
+            <TextInput
+              style={styles.input}
+              placeholder={
+                languageDonationForm.DONATION_GOAL_PLACEHOLDER[language]
+              }
+              keyboardType="numeric"
+              selectionColor={"#000"}
+              onChangeText={(val) => setTarget(val)}
+              underlineColorAndroid="transparent"
+            />
+          </View>
+        </View>
+
+        {/* Goal Date */}
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>
+            {languageDonationForm.GOAL_DATE[language]}
+          </Text>
+          <CustomButton
+            type={constants.BUTTON_TYPES.OUTLINED}
+            title={languageDonationForm.GOAL_DATE_BTN_TEXT[language]}
+            onPress={showDatepicker}
+          />
+          <Text style={styles.dateTxt}>
+            {languageDonationForm.SELECTED_DATE[language]}:&nbsp;
+            {getFormattedDate(targetDate)}
+          </Text>
+          {show && (
+            <DateTimePicker
+              value={targetDate}
+              mode={"date"}
+              onChange={onDateChange}
+            />
+          )}
+        </View>
+
+        {/* Donation Thread Description */}
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>
             {languageDonationForm.DESCRIPTION[language]}
@@ -87,9 +150,10 @@ const DonationForm = () => {
           </View>
         </View>
 
-        <Button
+        {/* Select Image For Donation Thread */}
+        <CustomButton
           type={constants.BUTTON_TYPES.OUTLINED}
-          title={languageDonationForm.UPLOAD_IMAGE[language]}
+          title={languageDonationForm.SELECT_IMAGE[language]}
           onPress={handleImagePickerButtonPress}
         />
         <View style={styles.thumbnailContainer}>
@@ -114,7 +178,7 @@ const DonationForm = () => {
         </View>
 
         <View style={styles.proceedBtnContainer}>
-          <Button
+          <CustomButton
             type={constants.BUTTON_TYPES.FILLED}
             title={languageDonationForm.PROCEED[language]}
             onPress={handleProceed}
@@ -129,6 +193,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    paddingTop: 20,
   },
   PageTitle: {
     fontSize: 24,
@@ -197,6 +262,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     marginTop: 30,
     marginBottom: 10,
+  },
+  dateTxt: {
+    fontSize: 14,
   },
 });
 

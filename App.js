@@ -17,6 +17,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     marginLeft: 20,
     marginRight: 20,
-    marginTop: StatusBar.currentHeight + 20,
+    marginTop: StatusBar.currentHeight,
   },
 });
