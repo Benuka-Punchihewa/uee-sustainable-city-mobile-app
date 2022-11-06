@@ -7,4 +7,8 @@ export default {
     OUTLINED: "outlined",
     FILLED: "filled",
   },
+  PAYMENT_METHODS: {
+    POINTS: "points",
+    ONLINE: "online",
+  },
 };

@@ -5,7 +5,7 @@ import languageDonation from "../language/language.donation";
 
 const language = "SIN";
 
-const Donations = () => {
+const DonationThreads = () => {
   const handleSearch = (value) => {
     console.log(value);
   };
@@ -62,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Donations;
+export default DonationThreads;

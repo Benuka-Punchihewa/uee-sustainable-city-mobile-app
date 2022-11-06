@@ -1,47 +1,27 @@
 export default {
-  CREATE_DONATION_THREAD: {
-    EN: "Create a Donation Thread",
-    SIN: "පරිත්‍යාග ත්‍රෙඩ් එකක් සාදන්න",
+  AMOUNT: {
+    EN: "Donation Amount",
+    SIN: "පරිත්යාග මුදල",
   },
-  TITLE: {
-    EN: "Title",
-    SIN: "මාතෘකාව",
+  AMOUNT_PLACEHOLDER: {
+    EN: "Enter the donation amount",
+    SIN: "පරිත්යාග මුදල ඇතුළත් කරන්න",
   },
-  DONATION_TITLE_PLACEHOLDER: {
-    EN: "Enter the donation title",
-    SIN: "පරිත්‍යාග මාතෘකාව ඇතුළත් කරන්න",
+  COMMENT: {
+    EN: "Comment",
+    SIN: "අදහස් දක්වන්න",
   },
-  GOAL: {
-    EN: "Funding Goal",
-    SIN: "අරමුදල් ඉලක්කය",
+  COMMENT_PLACEHOLDER: {
+    EN: "Enter the comment",
+    SIN: "අදහස ඇතුළත් කරන්න",
   },
-  DONATION_GOAL_PLACEHOLDER: {
-    EN: "Enter the funding goal",
-    SIN: "අරමුදල් ඉලක්කය ඇතුළත් කරන්න",
+  POINTS: {
+    EN: "Points",
+    SIN: "ලකුණු",
   },
-  GOAL_DATE: {
-    EN: "Goal Date",
-    SIN: "ඉලක්ක දිනය",
-  },
-  SELECTED_DATE: {
-    EN: "Selected Date",
-    SIN: "තෝරාගත් දිනය",
-  },
-  GOAL_DATE_BTN_TEXT: {
-    EN: "Select Date",
-    SIN: "දිනය තෝරන්න",
-  },
-  DESCRIPTION: {
-    EN: "Description",
-    SIN: "විස්තරය",
-  },
-  DONATION_DESCRIPTION_PLACEHOLDER: {
-    EN: "Enter the description",
-    SIN: "විස්තරය ඇතුලත් කරන්න",
-  },
-  SELECT_IMAGE: {
-    EN: "Select An Image",
-    SIN: "රූපයක් තෝරන්න",
+  ONLINE: {
+    EN: "Online",
+    SIN: "ඔන්ලයින්",
   },
   PROCEED: {
     EN: "PROCEED",

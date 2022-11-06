@@ -1,13 +1,14 @@
 import { StatusBar, StyleSheet, View } from "react-native";
-import Donations from "./screens/Donations";
-import DonationForm from "./screens/DonationForm";
+import DonationThreads from "./screens/DonationThreads";
+import DonationThreadForm from "./screens/DonationThreadForm";
 import Home from "./screens/Home";
 import DonationMain from "./screens/DonationMain";
+import DonationForm from "./screens/DonationForm";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <DonationMain />
+      <DonationForm />
     </View>
   );
 }
