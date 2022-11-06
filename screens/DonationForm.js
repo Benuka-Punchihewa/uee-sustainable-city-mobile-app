@@ -12,10 +12,13 @@ import languageDonationForm from "../language/language.donationForm";
 import { RadioButton } from "react-native-paper";
 import Button from "../component/Button";
 import { useDimensions } from "@react-native-community/hooks";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const language = "SIN";
 
 const DonationForm = () => {
+  const bottomNavigationHeight = useBottomTabBarHeight();
+
   const [checked, setChecked] = useState(constants.PAYMENT_METHODS.POINTS);
 
   const handleProceed = () => {};
@@ -26,7 +29,10 @@ const DonationForm = () => {
         style={{
           ...styles.container,
           minHeight:
-            useDimensions().screen.height - StatusBar.currentHeight - 10,
+            useDimensions().screen.height -
+            StatusBar.currentHeight -
+            bottomNavigationHeight -
+            10,
         }}
       >
         <Text style={styles.PageTitle}>
@@ -126,6 +132,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   PageTitle: {
     fontSize: 24,

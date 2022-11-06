@@ -12,7 +12,7 @@ import languageProfile from "../language/language.profile";
 
 const language = "SIN";
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
   const onEditPress = () => {};
 
   return (
@@ -65,13 +65,19 @@ const Profile = () => {
 
         <Text style={styles.optionTitle}>Options</Text>
         <View style={styles.optionsContainer}>
+          {/* Event */}
           <TouchableOpacity style={{ ...styles.option, marginRight: 5 }}>
-            <IoniconsIcon name="home" size={30} color="#000" />
+            <IoniconsIcon name="earth" size={30} color="#000" />
             <Text style={styles.optionLabel}>
               {languageProfile.EVENT[language]}
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{ ...styles.option, marginLeft: 5 }}>
+
+          {/* Donation */}
+          <TouchableOpacity
+            style={{ ...styles.option, marginLeft: 5 }}
+            onPress={() => navigation.navigate("DonationThreads")}
+          >
             <IoniconsIcon name="heart" size={30} color="#000" />
             <Text style={styles.optionLabel}>
               {languageProfile.DONATION[language]}
@@ -79,12 +85,15 @@ const Profile = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.optionsContainer}>
+          {/* Bills */}
           <TouchableOpacity style={{ ...styles.option, marginRight: 5 }}>
             <IoniconsIcon name="md-receipt" size={30} color="#000" />
             <Text style={styles.optionLabel}>
               {languageProfile.BILLS[language]}
             </Text>
           </TouchableOpacity>
+
+          {/* Garbage */}
           <TouchableOpacity style={{ ...styles.option, marginLeft: 5 }}>
             <IoniconsIcon name="trash-bin" size={30} color="#000" />
             <Text style={styles.optionLabel}>
@@ -102,6 +111,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingTop: 40,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   profileDetails: {
     flex: 1,

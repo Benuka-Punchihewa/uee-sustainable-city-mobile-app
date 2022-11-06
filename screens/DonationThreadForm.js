@@ -16,10 +16,13 @@ import { useDimensions } from "@react-native-community/hooks";
 import { useState } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const language = "SIN";
 
 const DonationThreadForm = () => {
+  const bottomNavigationHeight = useBottomTabBarHeight();
+
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -64,7 +67,10 @@ const DonationThreadForm = () => {
         style={{
           ...styles.container,
           minHeight:
-            useDimensions().screen.height - StatusBar.currentHeight - 10,
+            useDimensions().screen.height -
+            StatusBar.currentHeight -
+            bottomNavigationHeight -
+            10,
         }}
       >
         <Text style={styles.PageTitle}>
@@ -196,6 +202,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   PageTitle: {
     fontSize: 24,

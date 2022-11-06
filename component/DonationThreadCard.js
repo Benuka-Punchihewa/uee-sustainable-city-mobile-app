@@ -1,13 +1,20 @@
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
 import ProgressBar from "react-native-progress/Bar";
 import constants from "../constants";
 import languageDonationCard from "../language/language.donationCard";
 
 const language = "SIN";
 
-const DonationThreadCard = ({ imageURI, title, daysLeft, collected, progress }) => {
+const DonationThreadCard = ({
+  imageURI,
+  title,
+  daysLeft,
+  collected,
+  progress,
+  onPress,
+}) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.imgContainer}>
         <Image
           source={{
@@ -46,7 +53,7 @@ const DonationThreadCard = ({ imageURI, title, daysLeft, collected, progress }) 
           </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

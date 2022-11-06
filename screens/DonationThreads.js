@@ -5,7 +5,9 @@ import languageDonation from "../language/language.donation";
 
 const language = "SIN";
 
-const DonationThreads = () => {
+// TODO: Implement add donation threads button
+
+const DonationThreads = ({ navigation }) => {
   const handleSearch = (value) => {
     console.log(value);
   };
@@ -31,6 +33,7 @@ const DonationThreads = () => {
           daysLeft={20}
           collected={2000000}
           progress={0.87}
+          onPress={() => navigation.navigate("DonationMain")}
         />
         <DonationThreadCard
           imageURI={
@@ -40,6 +43,7 @@ const DonationThreads = () => {
           daysLeft={20}
           collected={2000000}
           progress={0.87}
+          onPress={() => navigation.navigate("DonationMain")}
         />
       </ScrollView>
     </View>
@@ -51,6 +55,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   PageTitle: {
     fontSize: 24,
