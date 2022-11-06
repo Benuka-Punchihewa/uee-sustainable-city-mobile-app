@@ -9,6 +9,7 @@ import MainView from "./screens/MainView";
 import WaterBills from "./screens/WaterBills";
 import ElectricityBills from "./screens/ElectricityBills";
 import MyJobs from "./screens/MyJobs";
+import BootomJobcard from "./component/Jobcard";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
       {/* <MyBills /> */}
       {/* <ElectricityBills/> */}
       <MyJobs/>
+      {/* <BootomJobcard/> */}
     </View>
   );
 }

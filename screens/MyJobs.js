@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
-import JobCard from "../component/JobCard";
+import JobCard from "../component/Jobcard";
 import languageMyjobs from "../language/language.MyJobs";
 
-const language = "EN";
+const language = "SIN";
 
 const MyJobs = () => {
 
