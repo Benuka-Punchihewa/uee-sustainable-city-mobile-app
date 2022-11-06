@@ -6,6 +6,9 @@ import DonationForm from "./screens/DonationForm";
 import Home from "./screens/Home";
 import ForgetPassword from "./screens/auth/ForgetPassword";
 import MainView from "./screens/MainView";
+import WaterBills from "./screens/WaterBills";
+import ElectricityBills from "./screens/ElectricityBills";
+import MyJobs from "./screens/MyJobs";
 
 export default function App() {
   return (
@@ -15,8 +18,11 @@ export default function App() {
       {/* <Register /> */}
       {/* <ForgetPassword /> */}
       {/* <MainView /> */}
-      <Donations />
-      <DonationForm />
+      {/* <Donations /> */}
+      {/* <DonationForm /> */}
+      {/* <MyBills /> */}
+      {/* <ElectricityBills/> */}
+      <MyJobs/>
     </View>
   );
 }

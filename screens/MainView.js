@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text,TouchableOpacity,View,StyleSheet,Image} from "react-native";
 import languageMainHome from '../language/language.MainHome';
+import Button from "../component/Button";
+import constants from "../constants";
 
 const language = "SIN";
 
@@ -22,11 +24,10 @@ const MainView = ({ navigation }) =>{
                 {languageMainHome.WELCOME[language]}
             </Text>
 
-            <View style={styles.formInput}>
-                <TouchableOpacity style={styles.defaultButton} onPress={() =>{ navigation.navigate("RideList")}}>
-                    <Text style={styles.loginbutton}>{languageMainHome.SIGN_IN[language]}</Text>
-                </TouchableOpacity>
-            </View>
+            <Button
+               type={constants.BUTTON_TYPES.FILLED}
+               title={languageMainHome.SIGN_IN[language]}
+            />
 
             <View style={styles.formInput}>
                 <TouchableOpacity onPress={() =>{ navigation.navigate("Register")}}>
@@ -38,11 +39,10 @@ const MainView = ({ navigation }) =>{
                 <View style={styles.line}></View>
             </View>
 
-            <View style={styles.formInput}>
-                <TouchableOpacity style={styles.SignUpButton} onPress={() =>{ navigation.navigate("RideList")}}>
-                    <Text style={styles.SignUpText}>{languageMainHome.SIGN_UP[language]}</Text>
-                </TouchableOpacity>
-            </View>
+            <Button
+               type={constants.BUTTON_TYPES.OUTLINED}
+               title={languageMainHome.SIGN_UP[language]}
+            />
                 
         </View>
     </View>
