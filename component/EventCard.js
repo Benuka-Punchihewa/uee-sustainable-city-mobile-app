@@ -1,8 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
-import ProgressBar from "react-native-progress/Bar";
 import constants from "../constants";
-import languageDonationCard from "../language/language.donationCard";
 
 const language = "SIN";
 
