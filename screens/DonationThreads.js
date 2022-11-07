@@ -1,11 +1,13 @@
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import DonationCard from "../component/DonationCard";
+import DonationThreadCard from "../component/DonationThreadCard";
 import Search from "../component/Search";
 import languageDonation from "../language/language.donation";
 
 const language = "SIN";
 
-const Donations = () => {
+// TODO: Implement add donation threads button
+
+const DonationThreads = ({ navigation }) => {
   const handleSearch = (value) => {
     console.log(value);
   };
@@ -23,7 +25,7 @@ const Donations = () => {
         style={styles.donationsContainer}
         showsVerticalScrollIndicator={false}
       >
-        <DonationCard
+        <DonationThreadCard
           imageURI={
             "http://www.greenschools.net/img/pic/Zero-Waste-School-Events-thumbnail.jpg"
           }
@@ -31,8 +33,9 @@ const Donations = () => {
           daysLeft={20}
           collected={2000000}
           progress={0.87}
+          onPress={() => navigation.navigate("DonationMain")}
         />
-        <DonationCard
+        <DonationThreadCard
           imageURI={
             "http://www.greenschools.net/img/pic/Zero-Waste-School-Events-thumbnail.jpg"
           }
@@ -40,6 +43,7 @@ const Donations = () => {
           daysLeft={20}
           collected={2000000}
           progress={0.87}
+          onPress={() => navigation.navigate("DonationMain")}
         />
       </ScrollView>
     </View>
@@ -50,6 +54,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   PageTitle: {
     fontSize: 24,
@@ -61,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Donations;
+export default DonationThreads;
