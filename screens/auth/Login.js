@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text,TouchableOpacity,View,StyleSheet,TextInput} from "react-native";
+import { Text,TouchableOpacity,View,StyleSheet,TextInput, ScrollView} from "react-native";
 import languageLogin from '../../language/language.login';
 
 const language = "SIN";
@@ -8,6 +8,7 @@ const language = "SIN";
 const Login = ({ navigation }) =>{
 
     return(
+        <ScrollView>
         <View style={styles.container}>
             <Text style={styles.header}>
                 {languageLogin.SIGN_IN[language]}
@@ -31,7 +32,7 @@ const Login = ({ navigation }) =>{
                 </View>
 
                 <View style={styles.formInput}>
-                    <TouchableOpacity style={styles.defaultButton} onPress={() =>{ navigation.navigate("RideList")}}>
+                    <TouchableOpacity style={styles.defaultButton} onPress={() =>{ navigation.navigate("Home")}}>
                         <Text style={styles.loginbutton}>{languageLogin.LOGIN[language]}</Text>
                     </TouchableOpacity>
                 </View>
@@ -48,12 +49,16 @@ const Login = ({ navigation }) =>{
                 </View>
         </View>
     </View>
+    </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
+        paddingTop: 20,
+        paddingLeft: 20,
+        paddingRight: 20,
     },defaultBg:{
         width:'100%',
         height:200,

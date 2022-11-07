@@ -1,13 +1,10 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import languageMyBills from "../language/language.MyBills";
 import BillCard from "../component/BillCard";
-import Button from "../component/Button";
-import constants from "../constants";
 
 const language = "SIN";
 
-const ElectricityBills = () => {
-
+const ElectricityBills = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
@@ -16,7 +13,7 @@ const ElectricityBills = () => {
       </Text>
 
     <View style={styles.HeaderContainer}>
-        <TouchableOpacity style={styles.button1}>
+        <TouchableOpacity style={styles.button1} onPress={() => navigation.navigate("WaterBills")}>
             <Text style={styles.text1}>{languageMyBills.WATER[language]}</Text>
         </TouchableOpacity> 
 
@@ -29,10 +26,18 @@ const ElectricityBills = () => {
         style={styles.billContainer}
         showsVerticalScrollIndicator={false}
       >
-        <BillCard/>
-        <BillCard/>
-        <BillCard/>
-        <BillCard/>
+        <BillCard
+          onPress={() => navigation.navigate("RecordMeterReading")}
+        />
+        <BillCard
+          onPress={() => navigation.navigate("RecordMeterReading")}
+        />
+        <BillCard
+          onPress={() => navigation.navigate("RecordMeterReading")}
+        />
+        <BillCard
+          onPress={() => navigation.navigate("RecordMeterReading")}
+        />
         
       </ScrollView>
     </View>

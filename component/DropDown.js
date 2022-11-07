@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput } from 'react-native'
 import React, { useState } from 'react'
-import ImageConstant from '../screens/ImageConstant';
+import ImageDropDown from '../screens/ImageDropDown';
 
 const DropDown = ({ data = [], value = {}, onSelect = () => {} }) => {
   console.log("selected value ", !!value);
@@ -21,7 +21,7 @@ const DropDown = ({ data = [], value = {}, onSelect = () => {} }) => {
         <Text>{!!value ? value?.name : `Apartment`}</Text>
         <Image
           style={{ width: 20, height: 20 ,transform:[{rotate: showOption? '180deg':'0deg'}]}}
-          source={ImageConstant.icDropDown}
+          source={ImageDropDown.icDropDown}
         />
       </TouchableOpacity>
       {showOption && (

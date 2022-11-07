@@ -1,31 +1,23 @@
 export default {
-    MY_BILLS: {
-        EN: "My Bills",
-        SIN: "මගේ බිල්පත්",
+    RECORD_METER_READING: {
+        EN: "Record Meter Reading",
+        SIN: "මනු කියවීම්",
     },
-    WATER: {
-        EN: "Water",
-        SIN: "ජල",
+    APARTMENT: {
+        EN: "Apartment",
+        SIN: "මහල් නිවාසය",
     },
-    ELECTRICITY: {
-        EN: "Electricity",
-        SIN: "විදුලි",
+    HOME_ID: {
+        EN: "Home ID",
+        SIN: "නිවාස අංකය",
     },
-    MONTHLY_CHARGE: {
-        EN: "Monthly Charge",
-        SIN: "මාසික ගාස්තුව",
+    PROCEED:{
+        EN:"Proceed",
+        SIN:"ඉදිරියට යන්න"
     },
-    POINT_EARNED: {
-        EN: "Points Earned",
-        SIN: "උපයා ඇති ලකුණු",
-    },
-    BILL_DATE:{
-        EN: "Bill Date",
-        SIN: "බිල්පත් දිනය",
-    },
-    RS:{
-        EN: "Rs",
-        SIN: "රු",
-    }
-  };
+    CURRENT_READING: {
+        EN: "Current Reading",
+        SIN: "වත්මන් කියවීම",
+    },};
   
+ 

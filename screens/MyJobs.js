@@ -5,7 +5,7 @@ import languageMyjobs from "../language/language.MyJobs";
 
 const language = "SIN";
 
-const MyJobs = () => {
+const MyJobs = ({ navigation }) => {
 
   return (
     <View style={styles.container}>

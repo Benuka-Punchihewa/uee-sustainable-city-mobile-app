@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import ProgressBar from "react-native-progress/Bar";
 import constants from "../constants";
 import languageDonationCard from "../language/language.donationCard";
@@ -6,9 +6,9 @@ import languageMyBills from "../language/language.MyBills";
 
 const language = "SIN";
 
-const BillCard = ({ imageURI, title, daysLeft, progress,collected }) => {
+const BillCard = ({ onPress}) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}> 
       <View style={styles.detailContainer}>
        <View style={styles.cardHeader}>
             {languageMyBills.MONTHLY_CHARGE[language]}
@@ -32,22 +32,38 @@ const BillCard = ({ imageURI, title, daysLeft, progress,collected }) => {
             </View>
         </View>
         </View>
-      </View>
+      </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    margin: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#E0F7FA',
+  },
+  bottomNavigationView: {
+    backgroundColor: '#fff',
+    width: '100%',
+    height: 380,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  container: {
     flexDirection: "row",
     backgroundColor: "#D8F3DC",
     height: 150,
-    width: "100%",
+    width: "90%",
     borderTopLeftRadius: 32,
     borderBottomRightRadius: 32,
     marginBottom: 10,
+    justifyContent: 'space-between',
+    marginLeft:18,
   },
   detailContainer: {
-    flex: 3,
+    flex: 1,
     padding: 10,
     justifyContent: "center",
     alignContent: "center",
@@ -58,8 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   space:{
-    marginLeft:5,
-    fontSize:18,
+    marginLeft:25,
   },
   cardHeader:{
     marginLeft:10,
@@ -68,7 +83,56 @@ const styles = StyleSheet.create({
     color:'#2D6A4F'
   },subText:{
     fontSize:14,
-  }
+  },
+  button: {
+    backgroundColor: "#40916C",
+    padding: 4,
+    width: "100%",
+    height: 40,
+    borderRadius: 8,
+  },
+  text: {
+    fontSize: 12,
+    color: "white",
+    textAlign: "center",
+    padding: 6,
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    marginBottom: 20,
+    alignSelf:'flex-start',
+    marginLeft:100
+  },
+  checkbox: {
+    alignSelf: "center",
+  },
+  label: {
+    margin: 2,
+    marginLeft:40
+  },
+  CheckBoxcontainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  bottomTop:{
+    marginBottom:30,
+    marginRight:50,
+  },
+  button1: {
+    backgroundColor: "#40916C",
+    padding: 4,
+    width: "150%",
+    height: 40,
+    borderRadius: 8,
+    textAlign:'center'
+  },
+  text1: {
+    fontSize: 14,
+    color: "white",
+    textAlign: "center",
+    padding: 6,
+  },
 });
 
 export default BillCard;

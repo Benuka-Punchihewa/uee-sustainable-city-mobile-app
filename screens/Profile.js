@@ -86,7 +86,8 @@ const Profile = ({ navigation }) => {
         </View>
         <View style={styles.optionsContainer}>
           {/* Bills */}
-          <TouchableOpacity style={{ ...styles.option, marginRight: 5 }}>
+          <TouchableOpacity style={{ ...styles.option, marginRight: 5 }}
+            onPress={() => navigation.navigate("WaterBills")}>
             <IoniconsIcon name="md-receipt" size={30} color="#000" />
             <Text style={styles.optionLabel}>
               {languageProfile.BILLS[language]}
@@ -94,7 +95,8 @@ const Profile = ({ navigation }) => {
           </TouchableOpacity>
 
           {/* Garbage */}
-          <TouchableOpacity style={{ ...styles.option, marginLeft: 5 }}>
+          <TouchableOpacity style={{ ...styles.option, marginLeft: 5 }}
+            onPress={() => navigation.navigate("MyJobs")}>
             <IoniconsIcon name="trash-bin" size={30} color="#000" />
             <Text style={styles.optionLabel}>
               {languageProfile.GARBAGE[language]}

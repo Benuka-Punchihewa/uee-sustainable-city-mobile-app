@@ -6,7 +6,7 @@ import constants from "../constants";
 
 const language = "SIN";
 
-const WaterBills = () => {
+const WaterBills = ({ navigation }) => {
 
 
   return (
@@ -20,7 +20,7 @@ const WaterBills = () => {
             <Text style={styles.text}>{languageMyBills.WATER[language]}</Text>
         </TouchableOpacity> 
 
-        <TouchableOpacity style={styles.button1}>
+        <TouchableOpacity style={styles.button1} onPress={() => navigation.navigate("ElectricityBills")}>
             <Text style={styles.text1}>{languageMyBills.ELECTRICITY[language]}</Text>
         </TouchableOpacity> 
     </View> 

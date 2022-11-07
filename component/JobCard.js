@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
  
 import {
-  SafeAreaView,
   StyleSheet,
   View,
   Text,
@@ -11,12 +10,11 @@ import {
 } from 'react-native';
  
 import { BottomSheet } from 'react-native-btr';
-import languageMyBills from '../language/language.MyBills';
 import languageMyjobs from "../language/language.MyJobs";
  
 const language = "SIN";
 
-const Jobcard = () => {
+const Jobcard = ({ navigation }) => {
   
   const [visible, setVisible] = useState(false);
 
@@ -159,13 +157,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#D8F3DC",
     height: 150,
-    width: "100%",
+    width: "90%",
     borderTopLeftRadius: 32,
     borderBottomRightRadius: 32,
     marginBottom: 10,
+    justifyContent: 'space-between',
+    marginLeft:18,
   },
   detailContainer: {
-    flex: 3,
+    flex: 1,
     padding: 10,
     justifyContent: "center",
     alignContent: "center",

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text,TouchableOpacity,View,StyleSheet,Image} from "react-native";
+import { Text,TouchableOpacity,View,StyleSheet,Image, ScrollView} from "react-native";
 import languageMainHome from '../language/language.MainHome';
 import Button from "../component/Button";
 import constants from "../constants";
@@ -7,9 +7,10 @@ import constants from "../constants";
 const language = "SIN";
 
 //Splash screen
-const MainView = ({ navigation }) =>{
+const GetStarted = ({ navigation }) =>{
 
     return(
+        <ScrollView>
         <View style={styles.container}>
             <View style={styles.pointsContainer}>
 
@@ -27,6 +28,7 @@ const MainView = ({ navigation }) =>{
             <Button
                type={constants.BUTTON_TYPES.FILLED}
                title={languageMainHome.SIGN_IN[language]}
+               onPress={() => navigation.navigate("Login")}
             />
 
             <View style={styles.formInput}>
@@ -42,16 +44,21 @@ const MainView = ({ navigation }) =>{
             <Button
                type={constants.BUTTON_TYPES.OUTLINED}
                title={languageMainHome.SIGN_UP[language]}
+               onPress={() => navigation.navigate("Register")}
             />
                 
         </View>
     </View>
+    </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
+        paddingTop: 20,
+        paddingLeft: 20,
+        paddingRight: 20,
     },formInput:{
         marginTop:5,
         padding:5,
@@ -97,4 +104,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MainView;
+export default GetStarted;
