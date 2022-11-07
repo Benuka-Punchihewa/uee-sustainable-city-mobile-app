@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text,TouchableOpacity,View,StyleSheet,TextInput, ScrollView} from "react-native";
+import DropDown from '../../component/DropDown';
 import languageLogin from '../../language/language.login';
 import languageRegister from '../../language/language.register';
 
 const language = "SIN";
 
+let data = [{
+    id:1,
+    name:"House 1",
+},{
+    id:2,
+    name:"House 2",
+},{
+    id:3,
+    name:"House 3",
+}]
+
 //Register screen
 const Register = ({ navigation }) =>{
 
+    const [selectedItem,setSelectedItem] = useState(null)
+
+    const onSelect = (item) => {
+        setSelectedItem(item)
+    }
     return(
         <ScrollView>
         <View style={styles.container}>
@@ -23,12 +40,24 @@ const Register = ({ navigation }) =>{
 
                 <View style={styles.formInput}>
                     <Text style={styles.text}>{languageRegister.APARTMENT[language]}</Text>
-                    <TextInput style={styles.textInput} placeholder={languageRegister.APARTMENT[language]}/>
+                    {/* <TextInput style={styles.textInput} placeholder={languageRegister.APARTMENT[language]} /> */}
+                    <DropDown
+                        title={languageRegister.APARTMENT[language]}
+                        value={selectedItem}
+                        data={data}
+                        onSelect={onSelect}
+                    />
                 </View>
 
                 <View style={styles.formInput}>
                     <Text style={styles.text}>{languageRegister.HOME[language]}</Text>
-                    <TextInput style={styles.textInput} placeholder={languageRegister.HOME[language]} secureTextEntry={true}/>
+                    {/* <TextInput style={styles.textInput} placeholder={languageRegister.HOME[language]} secureTextEntry={true}/> */}
+                    <DropDown
+                        title={languageRegister.APARTMENT[language]}
+                        value={selectedItem}
+                        data={data}
+                        onSelect={onSelect}
+                    />
                 </View>
                 
                 <View style={styles.formInput}>

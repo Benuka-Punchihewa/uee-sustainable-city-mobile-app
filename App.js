@@ -10,21 +10,22 @@ import WaterBills from "./screens/WaterBills";
 import ElectricityBills from "./screens/ElectricityBills";
 import MyJobs from "./screens/MyJobs";
 import BootomJobcard from "./component/Jobcard";
+import RecordMeterReading from "./screens/RecordMeterReading";
 
 export default function App() {
   return (
     <View style={styles.container}>
       {/* <Home /> */}
       {/* <Login /> */}
-      {/* <Register /> */}
+      <Register />
       {/* <ForgetPassword /> */}
       {/* <MainView /> */}
       {/* <Donations /> */}
       {/* <DonationForm /> */}
-      {/* <MyBills /> */}
+      {/* <WaterBills /> */}
       {/* <ElectricityBills/> */}
-      <MyJobs/>
-      {/* <BootomJobcard/> */}
+      {/* <MyJobs/> */}
+      {/* <RecordMeterReading/> */}
     </View>
   );
 }
