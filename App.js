@@ -4,11 +4,15 @@ import Donations from "./screens/Donations";
 import DonationForm from "./screens/DonationForm";
 import Home from "./screens/Home";
 import EventView from "./screens/EventView";
+import MyEvent from "./screens/MyEvent";
+import EventForm from "./screens/EventForm";
+import FeedbackForm from "./screens/FeedbackForm";
+import QRscanner from "./screens/QRscanner";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <DonationForm />
+      <MyEvent />
     </View>
   );
 }

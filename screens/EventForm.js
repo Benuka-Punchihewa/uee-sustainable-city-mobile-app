@@ -1,0 +1,253 @@
+import React, { useState } from "react";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  ScrollView,
+  StatusBar,
+  Image,
+} from "react-native";
+import languageEventForm from "../language/language.eventForm";
+import { useDimensions } from "@react-native-community/hooks";
+import constants from "../constants";
+import Button from "../component/Button";
+import Icon from "react-native-vector-icons/FontAwesome";
+import DocumentPicker from "react-native-document-picker";
+import DatePicker from "react-native-modern-datepicker";
+
+const language = "SIN";
+
+const EventForm = () => {
+  const [image, setImage] = useState(null);
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [venue, setVenue] = useState("");
+  const [description, setDescription] = useState("");
+  const [open, setOpen] = useState(false);
+
+  const [selectedDate, setSelectedDate] = useState("");
+
+  const handleImagePickerButtonPress = async () => {
+    try {
+      const pickerResult = await DocumentPicker.pickSingle({
+        presentationStyle: "fullScreen",
+        copyTo: "cachesDirectory",
+        type: ["image/jpeg", "image/png"],
+      });
+      setImage(pickerResult);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleImageRemove = () => {};
+
+  const handleProceed = () => {};
+
+  return (
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View
+        style={{
+          ...styles.container,
+          minHeight:
+            useDimensions().screen.height - StatusBar.currentHeight - 30,
+        }}
+      >
+        <Text style={styles.PageTitle}>
+          {languageEventForm.CREATE_EVENT[language]}
+        </Text>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>
+            {languageEventForm.TITLE[language]}
+          </Text>
+          <View style={styles.txtInputContainer}>
+            <TextInput
+              style={styles.input}
+              placeholder={languageEventForm.EVENT_TITLE_PLACEHOLDER[language]}
+              selectionColor={"#000"}
+              onChangeText={(val) => setTitle(val)}
+              underlineColorAndroid="transparent"
+            />
+          </View>
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>
+            {languageEventForm.DATE[language]}
+          </Text>
+          <View style={styles.txtInputContainer} onPress={() => setOpen(true)}>
+            <TextInput
+              style={styles.input}
+              placeholder={languageEventForm.EVENT_TITLE_PLACEHOLDER[language]}
+              selectionColor={"#000"}
+              onChangeText={(val) => setTitle(val)}
+              underlineColorAndroid="transparent"
+            />
+          </View>
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>
+            {languageEventForm.TIME[language]}
+          </Text>
+          <View style={styles.txtInputContainer}>
+            <TextInput
+              style={styles.input}
+              placeholder={languageEventForm.EVENT_TITLE_PLACEHOLDER[language]}
+              selectionColor={"#000"}
+              onChangeText={(val) => setTitle(val)}
+              underlineColorAndroid="transparent"
+            />
+          </View>
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>
+            {languageEventForm.VENUE[language]}
+          </Text>
+          <View style={styles.txtInputContainer}>
+            <TextInput
+              style={styles.input}
+              placeholder={languageEventForm.VENUE_PLACEHOLDER[language]}
+              selectionColor={"#000"}
+              onChangeText={(val) => setVenue(val)}
+              underlineColorAndroid="transparent"
+            />
+          </View>
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>
+            {languageEventForm.DESCRIPTION[language]}
+          </Text>
+          <View style={styles.multiLnTxtInputContainer}>
+            <TextInput
+              style={styles.multiLnTxtInput}
+              placeholder={
+                languageEventForm.EVENT_DESCRIPTION_PLACEHOLDER[language]
+              }
+              selectionColor={"#000"}
+              multiline={true}
+              onChangeText={(val) => setDescription(val)}
+              underlineColorAndroid="transparent"
+            />
+          </View>
+        </View>
+
+        <Button
+          type={constants.BUTTON_TYPES.OUTLINED}
+          title={languageEventForm.UPLOAD_IMAGE[language]}
+          onPress={handleImagePickerButtonPress}
+        />
+
+        <View style={styles.thumbnailContainer}>
+          <Image
+            source={{
+              uri: "http://www.greenschools.net/img/pic/Zero-Waste-School-Events-thumbnail.jpg",
+            }}
+            style={styles.thumbnail}
+          />
+          <View style={styles.imgMetaData}>
+            <Text style={styles.metaDataTxt}>Image.jpg</Text>
+            <Text style={styles.metaDataTxt}>5.6MB</Text>
+          </View>
+          <View style={styles.Thumbnailoptions}>
+            <Icon
+              name="close"
+              size={22}
+              color="#40916C"
+              onPress={handleImageRemove}
+            />
+          </View>
+        </View>
+
+        <View style={styles.proceedBtnContainer}>
+          <Button
+            type={constants.BUTTON_TYPES.FILLED}
+            title={languageEventForm.CREATE[language]}
+            onPress={handleProceed}
+          />
+        </View>
+      </View>
+    </ScrollView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  PageTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 30,
+  },
+  inputContainer: {
+    marginBottom: 25,
+  },
+  inputLabel: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  txtInputContainer: {
+    height: 48,
+    paddingHorizontal: 20,
+    backgroundColor: "#D9D9D9",
+    borderRadius: 8,
+  },
+  input: {
+    flex: 1,
+    color: "#424242",
+    fontSize: 14,
+  },
+  multiLnTxtInputContainer: {
+    height: 200,
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    backgroundColor: "#D9D9D9",
+    borderRadius: 8,
+  },
+  multiLnTxtInput: {
+    flex: 1,
+    color: "#424242",
+    fontSize: 14,
+    textAlignVertical: "top",
+  },
+  thumbnailContainer: {
+    flexDirection: "row",
+    backgroundColor: "#D8F3DC",
+    borderRadius: 8,
+    height: 100,
+  },
+  thumbnail: {
+    borderRadius: 8,
+    height: 100,
+    width: 100,
+  },
+  imgMetaData: {
+    flex: 2,
+    justifyContent: "center",
+    marginHorizontal: 10,
+  },
+  metaDataTxt: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#40916C",
+  },
+  Thumbnailoptions: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  proceedBtnContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    marginTop: 30,
+    marginBottom: 10,
+  },
+});
+
+export default EventForm;
