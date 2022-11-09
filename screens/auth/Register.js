@@ -9,23 +9,28 @@ const language = "SIN";
 
 let data = [{
     id:1,
-    name:"House 1",
+    name:"A/425/31",
 },{
     id:2,
-    name:"House 2",
+    name:"A/325/31",
 },{
     id:3,
-    name:"House 3",
+    name:"A/225/30",
 }]
 
 //Register screen
 const Register = ({ navigation }) =>{
 
     const [selectedItem,setSelectedItem] = useState(null)
+    const [selectedItem2,setSelectedItem2] = useState(null)
     
     const onSelect = (item) => {
         setSelectedItem(item)
     }
+
+    const onSelect1 = (item) => {
+      setSelectedItem2(item)
+  }
 
     const [targetDate, setTargetDate] = useState(new Date());
     const [show, setShow] = useState(false);
@@ -76,10 +81,10 @@ const Register = ({ navigation }) =>{
               <Text style={styles.text}>{languageRegister.HOME[language]}</Text>
               {/* <TextInput style={styles.textInput} placeholder={languageRegister.HOME[language]} secureTextEntry={true}/> */}
               <DropDown
-                title={languageRegister.APARTMENT[language]}
-                value={selectedItem}
+                title={languageRegister.HOME[language]}
+                value={selectedItem2}
                 data={data}
-                onSelect={onSelect}
+                onSelect={onSelect1}
               />
             </View>
 
@@ -160,10 +165,11 @@ const Register = ({ navigation }) =>{
 
 const styles = StyleSheet.create({
     container:{
-        flex:1,
-        paddingTop: 20,
-        paddingLeft: 20,
-        paddingRight: 20,
+      paddingTop: 20,
+      flex: 1,
+      backgroundColor: "#fff",
+      paddingLeft: 20,
+      paddingRight: 20,
     },defaultBg:{
         width:'100%',
         height:200,
@@ -179,7 +185,7 @@ const styles = StyleSheet.create({
         borderRadius:10
     },defaultButton:{
         padding:15,
-        backgroundColor:'#4287f5',
+        backgroundColor:'#40916C',
         borderRadius:10,
     },text:{
         padding:5,
@@ -206,7 +212,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#ddd',
         width:'100%',
     },needAccount:{
-        color:"#14b53f",
+        color:"#40916C",
         textAlign:'center',
         fontSize:16,
         fontWeight:'bold',

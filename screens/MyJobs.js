@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
-import JobCard from "../component/Jobcard";
+import { View, Text, StyleSheet, ScrollView} from "react-native";
+import JobCard from "../component/JobCard";
 import languageMyjobs from "../language/language.MyJobs";
 
 const language = "SIN";

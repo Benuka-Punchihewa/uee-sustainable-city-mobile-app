@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput } from 'reac
 import React, { useState } from 'react'
 import ImageDropDown from '../screens/ImageDropDown';
 
-const DropDown = ({ data = [], value = {}, onSelect = () => {} }) => {
+const DropDown = ({ data = [], value = {}, title ,onSelect = () => {} }) => {
   console.log("selected value ", !!value);
   const [showOption, setshowOption] = useState(false);
 
@@ -18,7 +18,7 @@ const DropDown = ({ data = [], value = {}, onSelect = () => {} }) => {
         activeOpacity={0.8}
         onPress={() => setshowOption(!showOption)}
       >
-        <Text>{!!value ? value?.name : `Apartment`}</Text>
+        <Text>{!!value ? value?.name : title}</Text>
         <Image
           style={{ width: 20, height: 20 ,transform:[{rotate: showOption? '180deg':'0deg'}]}}
           source={ImageDropDown.icDropDown}

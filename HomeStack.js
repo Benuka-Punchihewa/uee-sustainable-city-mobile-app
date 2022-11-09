@@ -11,7 +11,6 @@ import Login from "./screens/auth/Login";
 import Register from "./screens/auth/Register";
 import ForgetPassword from "./screens/auth/ForgetPassword";
 import RecordMeterReading from "./screens/RecordMeterReading";
-import Sample from "./screens/Sample";
 
 const options = { headerShown: false };
 
@@ -20,8 +19,8 @@ const Stack = createStackNavigator();
 const HomeStack = () => {
   return (
     <Stack.Navigator>
-      {/* <Stack.Screen name="GetStarted" component={GetStarted} options={options} /> */}
-      <Stack.Screen name="Hi" component={Register} options={options} />
+      <Stack.Screen name="GetStarted" component={GetStarted} options={options} />
+      {/* <Stack.Screen name="Hi" component={Register} options={options} /> */}
       <Stack.Screen
         name="Home"
         component={Home}

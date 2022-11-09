@@ -7,22 +7,27 @@ const language = "SIN";
 
 let data = [{
     id:1,
-    name:"House 1",
+    name:"A/425/31",
 },{
     id:2,
-    name:"House 2",
+    name:"A/325/31",
 },{
     id:3,
-    name:"House 3",
+    name:"A/225/30",
 }]
 
 //Register screen
 const RecordMeterReading = ({ navigation }) =>{
 
     const [selectedItem,setSelectedItem] = useState(null)
+    const [selectedItem2,setSelectedItem2] = useState(null)
 
     const onSelect = (item) => {
         setSelectedItem(item)
+    }
+
+    const onSelect1 = (item) => {
+        setSelectedItem2(item)
     }
     return(
         <ScrollView>
@@ -50,9 +55,9 @@ const RecordMeterReading = ({ navigation }) =>{
                     {/* <TextInput style={styles.textInput} placeholder={languageRegister.HOME[language]} secureTextEntry={true}/> */}
                     <DropDown
                         title={languageRecordMeterReading.HOME_ID[language]}
-                        value={selectedItem}
+                        value={selectedItem2}
                         data={data}
-                        onSelect={onSelect}
+                        onSelect={onSelect1}
                     />
                 </View>
                 
