@@ -1,50 +1,21 @@
-import { View, StyleSheet, Image, Text } from "react-native";
-import ProgressBar from "react-native-progress/Bar";
-import constants from "../constants";
-import languageDonationCard from "../language/language.donationCard";
+import { View, StyleSheet, Text } from "react-native";
+import languageDonationMain from "../language/language.donationMain";
 
 const language = "SIN";
 
-const DonationCard = ({ imageURI, title, daysLeft, collected, progress }) => {
+const DonationCard = ({ donator, comment, donation, donationDate }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.imgContainer}>
-        <Image
-          source={{
-            uri: imageURI,
-          }}
-          style={styles.img}
-        />
-      </View>
+      <Text style={styles.donator}>{donator}l</Text>
+      <Text style={styles.comment}>{comment}</Text>
       <View style={styles.detailContainer}>
-        <Text numberOfLines={2} style={styles.eventTitle}>
-          {title}
-        </Text>
-        <Text style={styles.daysLeft}>
-          {language === constants.LANGUAGES.ENGLISH ? (
-            <> {daysLeft} Days Left</>
-          ) : (
-            <>දින {daysLeft} ඉතිරිව ඇත</>
-          )}
-        </Text>
-        <View style={styles.goalContainer}>
-          <Text style={styles.daysLeft}>
-            {languageDonationCard.RUPEES[language]}
-            {collected.toLocaleString()}
+        <View style={styles.donationAmount}>
+          <Text style={styles.donationAmountTxt}>
+            {languageDonationMain.RUPEES[language]}
+            {donation.toLocaleString("en-US")}
           </Text>
-          <View style={styles.progressContainer}>
-            <View style={styles.progressBarContainer}>
-              <ProgressBar
-                progress={progress}
-                width={null}
-                color={"#000"}
-                unfilledColor={"#fff"}
-                borderWidth={0}
-              />
-            </View>
-            <Text style={styles.progressPercentage}>{progress * 100}%</Text>
-          </View>
         </View>
+        <Text style={styles.donationDate}>{donationDate.toDateString()}</Text>
       </View>
     </View>
   );
@@ -52,50 +23,34 @@ const DonationCard = ({ imageURI, title, daysLeft, collected, progress }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    backgroundColor: "#D8F3DC",
-    height: 150,
-    width: "100%",
-    borderTopLeftRadius: 32,
-    borderBottomRightRadius: 32,
+    marginBottom: 20,
   },
-  imgContainer: {
-    flex: 2,
-  },
-  img: {
-    height: 145,
-    width: "100%",
-    borderTopLeftRadius: 32,
-    borderBottomRightRadius: 32,
-  },
-  detailContainer: {
-    flex: 3,
-    padding: 8,
-    justifyContent: "center",
-    alignContent: "center",
-    justifyContent: "space-around",
-  },
-  eventTitle: {
+  donator: {
     fontSize: 16,
     fontWeight: "bold",
   },
-  daysLeft: {
+  comment: {
     fontSize: 14,
   },
-  goalContainer: {},
-  progressContainer: {
+  detailContainer: {
+    flex: 1,
     flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 5,
   },
-  progressBarContainer: {
-    flex: 8,
-    justifyContent: "center",
+  donationAmount: {
+    backgroundColor: "#40916C",
+    paddingHorizontal: 10,
+    paddingVertical: 2,
+    borderRadius: 8,
   },
-  progressPercentage: {
-    flex: 2,
-    justifyContent: "center",
-    alignContent: "center",
-    fontSize: 11,
-    paddingLeft: 5,
+  donationAmountTxt: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 12,
+  },
+  donationDate: {
+    fontSize: 12,
   },
 });
 

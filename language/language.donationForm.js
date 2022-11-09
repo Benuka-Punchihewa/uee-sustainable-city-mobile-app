@@ -1,27 +1,27 @@
 export default {
-  CREATE_DONATION_THREAD: {
-    EN: "Create a Donation Thread",
-    SIN: "පරිත්‍යාග ත්‍රෙඩ් එකක් සාදන්න",
+  AMOUNT: {
+    EN: "Donation Amount",
+    SIN: "පරිත්යාග මුදල",
   },
-  TITLE: {
-    EN: "Title",
-    SIN: "මාතෘකාව",
+  AMOUNT_PLACEHOLDER: {
+    EN: "Enter the donation amount",
+    SIN: "පරිත්යාග මුදල ඇතුළත් කරන්න",
   },
-  DONATION_TITLE_PLACEHOLDER: {
-    EN: "Enter the donation title",
-    SIN: "පරිත්‍යාග මාතෘකාව ඇතුළත් කරන්න",
+  COMMENT: {
+    EN: "Comment",
+    SIN: "අදහස් දක්වන්න",
   },
-  DESCRIPTION: {
-    EN: "Description",
-    SIN: "විස්තරය",
+  COMMENT_PLACEHOLDER: {
+    EN: "Enter the comment",
+    SIN: "අදහස ඇතුළත් කරන්න",
   },
-  DONATION_DESCRIPTION_PLACEHOLDER: {
-    EN: "Enter the description",
-    SIN: "විස්තරය ඇතුලත් කරන්න",
+  POINTS: {
+    EN: "Points",
+    SIN: "ලකුණු",
   },
-  UPLOAD_IMAGE: {
-    EN: "Upload Image",
-    SIN: "රූපය උඩුගත කරන්න",
+  ONLINE: {
+    EN: "Online",
+    SIN: "ඔන්ලයින්",
   },
   PROCEED: {
     EN: "PROCEED",
