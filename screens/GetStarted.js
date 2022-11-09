@@ -6,18 +6,32 @@ import {
   StyleSheet,
   Image,
   ScrollView,
+  StatusBar
 } from "react-native";
 import languageMainHome from "../language/language.MainHome";
 import Button from "../component/Button";
 import constants from "../constants";
+import { useDimensions } from "@react-native-community/hooks";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const language = "SIN";
 
 //Splash screen
 const GetStarted = ({ navigation }) => {
+  const bottomNavigationHeight = useBottomTabBarHeight();
+
   return (
     <ScrollView>
-      <View style={styles.container}>
+      <View
+        style={{
+          ...styles.container,
+          minHeight:
+            useDimensions().screen.height -
+            StatusBar.currentHeight -
+            bottomNavigationHeight -
+            10,
+        }}
+      >
         <View style={styles.pointsContainer}>
           <View style={styles.ImgContainer}>
             <Image

@@ -1,13 +1,33 @@
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  StatusBar,
+} from "react-native";
 import DonationThreadCard from "../component/DonationThreadCard";
 import languageHome from "../language/language.home";
+import { useDimensions } from "@react-native-community/hooks";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const language = "SIN";
 
 const Home = ({ navigation }) => {
+  const bottomNavigationHeight = useBottomTabBarHeight();
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
+      <View
+        style={{
+          ...styles.container,
+          minHeight:
+            useDimensions().screen.height -
+            StatusBar.currentHeight -
+            bottomNavigationHeight -
+            10,
+        }}
+      >
         <View style={styles.pointsContainer}>
           <View style={styles.coinsImgContainer}>
             <Image

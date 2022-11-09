@@ -5,19 +5,32 @@ import {
   Image,
   Text,
   TouchableOpacity,
+  StatusBar,
 } from "react-native";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import IoniconsIcon from "react-native-vector-icons/Ionicons";
 import languageProfile from "../language/language.profile";
+import { useDimensions } from "@react-native-community/hooks";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const language = "SIN";
 
 const Profile = ({ navigation }) => {
+  const bottomNavigationHeight = useBottomTabBarHeight();
   const onEditPress = () => {};
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
+      <View
+        style={{
+          ...styles.container,
+          minHeight:
+            useDimensions().screen.height -
+            StatusBar.currentHeight -
+            bottomNavigationHeight -
+            10,
+        }}
+      >
         <View style={styles.profileDetails}>
           <Image
             source={{
@@ -86,8 +99,10 @@ const Profile = ({ navigation }) => {
         </View>
         <View style={styles.optionsContainer}>
           {/* Bills */}
-          <TouchableOpacity style={{ ...styles.option, marginRight: 5 }}
-            onPress={() => navigation.navigate("WaterBills")}>
+          <TouchableOpacity
+            style={{ ...styles.option, marginRight: 5 }}
+            onPress={() => navigation.navigate("WaterBills")}
+          >
             <IoniconsIcon name="md-receipt" size={30} color="#000" />
             <Text style={styles.optionLabel}>
               {languageProfile.BILLS[language]}
@@ -95,8 +110,10 @@ const Profile = ({ navigation }) => {
           </TouchableOpacity>
 
           {/* Garbage */}
-          <TouchableOpacity style={{ ...styles.option, marginLeft: 5 }}
-            onPress={() => navigation.navigate("MyJobs")}>
+          <TouchableOpacity
+            style={{ ...styles.option, marginLeft: 5 }}
+            onPress={() => navigation.navigate("MyJobs")}
+          >
             <IoniconsIcon name="trash-bin" size={30} color="#000" />
             <Text style={styles.optionLabel}>
               {languageProfile.GARBAGE[language]}

@@ -37,8 +37,7 @@
     "react-native-select-dropdown": "^3.0.1",
     "react-native-ui-xg": "^0.0.6",
     "react-native-vector-icons": "^9.2.0",
-    "react-native-web": "~0.18.7",
-    "reactjs-bottom-navigation": "^1.0.4"
+    "react-native-web": "~0.18.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

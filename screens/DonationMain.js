@@ -1,18 +1,37 @@
-import { View, StyleSheet, Image, ScrollView, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  ScrollView,
+  Text,
+  StatusBar,
+} from "react-native";
 import Button from "../component/Button";
 import DonationCard from "../component/DonationCard";
 import constants from "../constants";
 import languageDonationMain from "../language/language.donationMain";
 import ProgressBar from "react-native-progress/Bar";
+import { useDimensions } from "@react-native-community/hooks";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const language = "SIN";
 
 const DonationMain = ({ navigation }) => {
+  const bottomNavigationHeight = useBottomTabBarHeight();
   const handlePress = () => {};
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
+      <View
+        style={{
+          ...styles.container,
+          minHeight:
+            useDimensions().screen.height -
+            StatusBar.currentHeight -
+            bottomNavigationHeight -
+            10,
+        }}
+      >
         <Image
           source={{
             uri: "http://www.greenschools.net/img/pic/Zero-Waste-School-Events-thumbnail.jpg",

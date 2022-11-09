@@ -6,16 +6,29 @@ import {
   StyleSheet,
   TextInput,
   ScrollView,
+  StatusBar,
 } from "react-native";
 import languageLogin from "../../language/language.login";
+import { useDimensions } from "@react-native-community/hooks";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const language = "SIN";
 
 //login screen
 const Login = ({ navigation }) => {
+  const bottomNavigationHeight = useBottomTabBarHeight();
   return (
     <ScrollView>
-      <View style={styles.container}>
+      <View
+        style={{
+          ...styles.container,
+          minHeight:
+            useDimensions().screen.height -
+            StatusBar.currentHeight -
+            bottomNavigationHeight -
+            10,
+        }}
+      >
         <Text style={styles.header}>{languageLogin.SIGN_IN[language]}</Text>
         <View style={styles.pointsContainer}>
           <View style={styles.formInput}>

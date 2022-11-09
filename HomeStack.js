@@ -19,12 +19,12 @@ const Stack = createStackNavigator();
 const HomeStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="GetStarted" component={GetStarted} options={options} />
       <Stack.Screen
-        name="Home"
-        component={Home}
+        name="GetStarted"
+        component={GetStarted}
         options={options}
       />
+      <Stack.Screen name="Home" component={Home} options={options} />
       <Stack.Screen
         name="DonationThreadForm"
         component={DonationThreadForm}
@@ -50,21 +50,9 @@ const HomeStack = () => {
         component={ElectricityBills}
         options={options}
       />
-      <Stack.Screen
-        name="MyJobs"
-        component={MyJobs}
-        options={options}
-      />
-      <Stack.Screen
-        name="Login"
-        component={Login}
-        options={options}
-      />
-      <Stack.Screen
-        name="Register"
-        component={Register}
-        options={options}
-      />
+      <Stack.Screen name="MyJobs" component={MyJobs} options={options} />
+      <Stack.Screen name="Login" component={Login} options={options} />
+      <Stack.Screen name="Register" component={Register} options={options} />
       <Stack.Screen
         name="ForgetPassword"
         component={ForgetPassword}
