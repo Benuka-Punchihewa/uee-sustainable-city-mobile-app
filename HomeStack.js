@@ -20,7 +20,6 @@ const HomeStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="GetStarted" component={GetStarted} options={options} />
-      {/* <Stack.Screen name="Hi" component={Register} options={options} /> */}
       <Stack.Screen
         name="Home"
         component={Home}
