@@ -12,11 +12,12 @@ import { BottomSheet } from "react-native-btr";
 import languageMyjobs from "../language/language.MyJobs";
 import { RadioButton } from "react-native-paper";
 import constants from "../constants";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 const Jobcard = ({ navigation }) => {
   const [visible, setVisible] = useState(false);
+
+  const language = useSelector((state) => state.language.language);
 
   const [isSelectedPlastic, setisSelectedPlastic] = useState(false);
   const [isSelectedFoodWaste, setisSelectedFoodWaste] = useState(false);
@@ -110,13 +111,15 @@ const Jobcard = ({ navigation }) => {
                   </View> */}
 
                   <View style={styles.checkboxContainer}>
-                  <RadioButton
+                    <RadioButton
                       value={languageMyjobs.CATEGORY.POINTS}
-                      status={checked === languageMyjobs.CATEGORY.POINTS ? "checked" : "unchecked"}
-                      color={"#2D6A4F"}
-                      onPress={() =>
-                        setChecked(languageMyjobs.CATEGORY.POINTS)
+                      status={
+                        checked === languageMyjobs.CATEGORY.POINTS
+                          ? "checked"
+                          : "unchecked"
                       }
+                      color={"#2D6A4F"}
+                      onPress={() => setChecked(languageMyjobs.CATEGORY.POINTS)}
                     />
                     <Text style={styles.label}>
                       {languageMyjobs.FOOD_WASTE[language]}
@@ -140,11 +143,13 @@ const Jobcard = ({ navigation }) => {
                   <View style={styles.checkboxContainer}>
                     <RadioButton
                       value={languageMyjobs.CATEGORY.ONLINE}
-                      status={checked === languageMyjobs.CATEGORY.ONLINE ? "checked" : "unchecked"}
-                      color={"#2D6A4F"}
-                      onPress={() =>
-                        setChecked(languageMyjobs.CATEGORY.ONLINE)
+                      status={
+                        checked === languageMyjobs.CATEGORY.ONLINE
+                          ? "checked"
+                          : "unchecked"
                       }
+                      color={"#2D6A4F"}
+                      onPress={() => setChecked(languageMyjobs.CATEGORY.ONLINE)}
                     />
                     <Text style={styles.label}>
                       {languageMyjobs.OTHERS[language]}
@@ -175,11 +180,9 @@ export default Jobcard;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 20,
+    marginBottom: 20,
     flex: 1,
     backgroundColor: "#fff",
-    paddingLeft: 20,
-    paddingRight: 20,
   },
   bottomNavigationView: {
     backgroundColor: "#fff",

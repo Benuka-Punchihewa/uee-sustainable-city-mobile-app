@@ -1,32 +1,35 @@
+import { useState } from "react";
 import {
+  Text,
   View,
   StyleSheet,
-  Text,
   TextInput,
-  Image,
   ScrollView,
   StatusBar,
+  Image,
 } from "react-native";
-import DocumentPicker from "react-native-document-picker";
-import languageDonationThreadForm from "../language/language.donationThreadForm";
-import Icon from "react-native-vector-icons/FontAwesome";
-import CustomButton from "../component/Button";
-import constants from "../constants";
+import languageEventForm from "../language/language.eventForm";
 import { useDimensions } from "@react-native-community/hooks";
-import { useState } from "react";
+import constants from "../constants";
+import Button from "../component/Button";
+import CustomButton from "../component/Button";
+import Icon from "react-native-vector-icons/FontAwesome";
+import DocumentPicker from "react-native-document-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import { useSelector } from "react-redux";
 
-const DonationThreadForm = () => {
+const EventForm = ({ navigation }) => {
   const language = useSelector((state) => state.language.language);
 
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
+  const [venue, setVenue] = useState("");
   const [description, setDescription] = useState("");
   const [targetDate, setTargetDate] = useState(new Date());
+  const [time, setTime] = useState(new Date());
   const [show, setShow] = useState(false);
-  const [target, setTarget] = useState("");
+  const [timeShow, setTimeShow] = useState(false);
 
   const onDateChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -40,6 +43,20 @@ const DonationThreadForm = () => {
 
   const getFormattedDate = (dateObj) => {
     return moment(dateObj).format("YYYY-MM-DD");
+  };
+
+  const onTimeChange = (event, selectedTime) => {
+    const currentTime = selectedTime;
+    setTimeShow(false);
+    setTime(currentTime);
+  };
+
+  const showTimepicker = () => {
+    setTimeShow(true);
+  };
+
+  const getFormattedTime = (timeObj) => {
+    return moment(timeObj).format("h:mm");
   };
 
   const handleImagePickerButtonPress = async () => {
@@ -65,24 +82,21 @@ const DonationThreadForm = () => {
         style={{
           ...styles.container,
           minHeight:
-            useDimensions().screen.height - StatusBar.currentHeight - 10,
+            useDimensions().screen.height - StatusBar.currentHeight - 30,
         }}
       >
         <Text style={styles.PageTitle}>
-          {languageDonationThreadForm.CREATE_DONATION_THREAD[language]}
+          {languageEventForm.CREATE_EVENT[language]}
         </Text>
 
-        {/* Donation Title */}
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>
-            {languageDonationThreadForm.TITLE[language]}
+            {languageEventForm.TITLE[language]}
           </Text>
           <View style={styles.txtInputContainer}>
             <TextInput
               style={styles.input}
-              placeholder={
-                languageDonationThreadForm.DONATION_TITLE_PLACEHOLDER[language]
-              }
+              placeholder={languageEventForm.EVENT_TITLE_PLACEHOLDER[language]}
               selectionColor={"#000"}
               onChangeText={(val) => setTitle(val)}
               underlineColorAndroid="transparent"
@@ -90,37 +104,18 @@ const DonationThreadForm = () => {
           </View>
         </View>
 
-        {/* Target*/}
+        {/* date */}
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>
-            {languageDonationThreadForm.GOAL[language]}
-          </Text>
-          <View style={styles.txtInputContainer}>
-            <TextInput
-              style={styles.input}
-              placeholder={
-                languageDonationThreadForm.DONATION_GOAL_PLACEHOLDER[language]
-              }
-              keyboardType="numeric"
-              selectionColor={"#000"}
-              onChangeText={(val) => setTarget(val)}
-              underlineColorAndroid="transparent"
-            />
-          </View>
-        </View>
-
-        {/* Goal Date */}
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>
-            {languageDonationThreadForm.GOAL_DATE[language]}
+            {languageEventForm.DATE[language]}
           </Text>
           <CustomButton
             type={constants.BUTTON_TYPES.OUTLINED}
-            title={languageDonationThreadForm.GOAL_DATE_BTN_TEXT[language]}
+            title={languageEventForm.DATE_BTN_TEXT[language]}
             onPress={showDatepicker}
           />
           <Text style={styles.dateTxt}>
-            {languageDonationThreadForm.SELECTED_DATE[language]}:&nbsp;
+            {languageEventForm.SELECTED_DATE[language]}:&nbsp;
             {getFormattedDate(targetDate)}
           </Text>
           {show && (
@@ -132,18 +127,53 @@ const DonationThreadForm = () => {
           )}
         </View>
 
-        {/* Donation Thread Description */}
+        {/* time */}
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>
-            {languageDonationThreadForm.DESCRIPTION[language]}
+            {languageEventForm.TIME[language]}
+          </Text>
+          <CustomButton
+            type={constants.BUTTON_TYPES.OUTLINED}
+            title={languageEventForm.TIME_BTN_TEXT[language]}
+            onPress={showTimepicker}
+          />
+          <Text style={styles.dateTxt}>
+            {languageEventForm.SELECTED_TIME[language]}:&nbsp;
+            {getFormattedTime(time)}
+          </Text>
+          {timeShow && (
+            <DateTimePicker
+              value={time}
+              mode={"time"}
+              onChange={onTimeChange}
+            />
+          )}
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>
+            {languageEventForm.VENUE[language]}
+          </Text>
+          <View style={styles.txtInputContainer}>
+            <TextInput
+              style={styles.input}
+              placeholder={languageEventForm.VENUE_PLACEHOLDER[language]}
+              selectionColor={"#000"}
+              onChangeText={(val) => setVenue(val)}
+              underlineColorAndroid="transparent"
+            />
+          </View>
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>
+            {languageEventForm.DESCRIPTION[language]}
           </Text>
           <View style={styles.multiLnTxtInputContainer}>
             <TextInput
               style={styles.multiLnTxtInput}
               placeholder={
-                languageDonationThreadForm.DONATION_DESCRIPTION_PLACEHOLDER[
-                  language
-                ]
+                languageEventForm.EVENT_DESCRIPTION_PLACEHOLDER[language]
               }
               selectionColor={"#000"}
               multiline={true}
@@ -153,12 +183,12 @@ const DonationThreadForm = () => {
           </View>
         </View>
 
-        {/* Select Image For Donation Thread */}
-        <CustomButton
+        <Button
           type={constants.BUTTON_TYPES.OUTLINED}
-          title={languageDonationThreadForm.SELECT_IMAGE[language]}
+          title={languageEventForm.UPLOAD_IMAGE[language]}
           onPress={handleImagePickerButtonPress}
         />
+
         <View style={styles.thumbnailContainer}>
           <Image
             source={{
@@ -181,9 +211,9 @@ const DonationThreadForm = () => {
         </View>
 
         <View style={styles.proceedBtnContainer}>
-          <CustomButton
+          <Button
             type={constants.BUTTON_TYPES.FILLED}
-            title={languageDonationThreadForm.PROCEED[language]}
+            title={languageEventForm.PROCEED[language]}
             onPress={handleProceed}
           />
         </View>
@@ -211,7 +241,6 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 16,
     fontWeight: "bold",
-    marginBottom: 5,
   },
   txtInputContainer: {
     height: 48,
@@ -274,4 +303,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DonationThreadForm;
+export default EventForm;

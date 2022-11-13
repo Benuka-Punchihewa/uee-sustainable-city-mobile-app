@@ -1,13 +1,14 @@
 import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { useSelector } from "react-redux";
 import DonationThreadCard from "../component/DonationThreadCard";
 import Search from "../component/Search";
 import languageDonation from "../language/language.donation";
 
-const language = "SIN";
-
 // TODO: Implement add donation threads button
 
 const DonationThreads = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   const handleSearch = (value) => {
     console.log(value);
   };

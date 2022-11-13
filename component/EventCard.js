@@ -1,17 +1,8 @@
 import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
-import ProgressBar from "react-native-progress/Bar";
 import { useSelector } from "react-redux";
 import constants from "../constants";
-import languageDonationCard from "../language/language.donationCard";
 
-const DonationThreadCard = ({
-  imageURI,
-  title,
-  daysLeft,
-  collected,
-  progress,
-  onPress,
-}) => {
+const EventCard = ({ onPress }) => {
   const language = useSelector((state) => state.language.language);
 
   return (
@@ -19,40 +10,38 @@ const DonationThreadCard = ({
       <View style={styles.imgContainer}>
         <Image
           source={{
-            uri: imageURI,
+            uri: "http://www.greenschools.net/img/pic/Zero-Waste-School-Events-thumbnail.jpg",
           }}
           style={styles.img}
         />
       </View>
       <View style={styles.detailContainer}>
         <Text numberOfLines={2} style={styles.eventTitle}>
-          {title}
+          Let's Get Together And Clean Unawatuna Let's Get Together And Clean
+          Unawatuna
+        </Text>
+
+        <Text style={styles.daysLeft}>
+          {language === constants.LANGUAGES.ENGLISH ? (
+            <>On 12th Oct 2022</>
+          ) : (
+            <>2022 ඔක්‌තෝබර් 12 වැනිදා</>
+          )}
         </Text>
         <Text style={styles.daysLeft}>
           {language === constants.LANGUAGES.ENGLISH ? (
-            <> {daysLeft} Days Left</>
+            <>At Viharamahadewi Park</>
           ) : (
-            <>දින {daysLeft} ඉතිරිව ඇත</>
+            <>ස්ථානය Viharamahadewi Park</>
           )}
         </Text>
-        <View style={styles.goalContainer}>
-          <Text style={styles.daysLeft}>
-            {languageDonationCard.RUPEES[language]}
-            {collected.toLocaleString()}
-          </Text>
-          <View style={styles.progressContainer}>
-            <View style={styles.progressBarContainer}>
-              <ProgressBar
-                progress={progress}
-                width={null}
-                color={"#000"}
-                unfilledColor={"#fff"}
-                borderWidth={0}
-              />
-            </View>
-            <Text style={styles.progressPercentage}>{progress * 100}%</Text>
-          </View>
-        </View>
+        <Text style={styles.participate}>
+          {language === constants.LANGUAGES.ENGLISH ? (
+            <>20 People Participating</>
+          ) : (
+            <>20 දෙනෙකු සහභාගී වේ</>
+          )}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -106,6 +95,10 @@ const styles = StyleSheet.create({
     fontSize: 11,
     paddingLeft: 5,
   },
+  participate: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
 });
 
-export default DonationThreadCard;
+export default EventCard;

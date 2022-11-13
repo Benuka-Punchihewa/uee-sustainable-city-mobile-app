@@ -10,10 +10,11 @@ import DonationThreadCard from "../component/DonationThreadCard";
 import languageHome from "../language/language.home";
 import { useDimensions } from "@react-native-community/hooks";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 const Home = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   const bottomNavigationHeight = useBottomTabBarHeight();
 
   return (

@@ -12,10 +12,11 @@ import IoniconsIcon from "react-native-vector-icons/Ionicons";
 import languageProfile from "../language/language.profile";
 import { useDimensions } from "@react-native-community/hooks";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 const Profile = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   const bottomNavigationHeight = useBottomTabBarHeight();
   const onEditPress = () => {};
 
@@ -79,7 +80,10 @@ const Profile = ({ navigation }) => {
         <Text style={styles.optionTitle}>Options</Text>
         <View style={styles.optionsContainer}>
           {/* Event */}
-          <TouchableOpacity style={{ ...styles.option, marginRight: 5 }}>
+          <TouchableOpacity
+            style={{ ...styles.option, marginRight: 5 }}
+            onPress={() => navigation.navigate("MyEvent")}
+          >
             <IoniconsIcon name="earth" size={30} color="#000" />
             <Text style={styles.optionLabel}>
               {languageProfile.EVENT[language]}

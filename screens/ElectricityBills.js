@@ -1,44 +1,45 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import languageMyBills from "../language/language.MyBills";
 import BillCard from "../component/BillCard";
+import { useSelector } from "react-redux";
 
-const language = "SIN";
 
 const ElectricityBills = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.PageTitle}>
-        {languageMyBills.MY_BILLS[language]}
-      </Text>
+      <Text style={styles.PageTitle}>{languageMyBills.MY_BILLS[language]}</Text>
 
-    <View style={styles.HeaderContainer}>
-        <TouchableOpacity style={styles.button1} onPress={() => navigation.navigate("WaterBills")}>
-            <Text style={styles.text1}>{languageMyBills.WATER[language]}</Text>
-        </TouchableOpacity> 
+      <View style={styles.HeaderContainer}>
+        <TouchableOpacity
+          style={styles.button1}
+          onPress={() => navigation.navigate("WaterBills")}
+        >
+          <Text style={styles.text1}>{languageMyBills.WATER[language]}</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity style={styles.button}>
-            <Text style={styles.text}>{languageMyBills.ELECTRICITY[language]}</Text>
-        </TouchableOpacity> 
-    </View> 
+          <Text style={styles.text}>
+            {languageMyBills.ELECTRICITY[language]}
+          </Text>
+        </TouchableOpacity>
+      </View>
 
       <ScrollView
         style={styles.billContainer}
         showsVerticalScrollIndicator={false}
       >
-        <BillCard
-          onPress={() => navigation.navigate("RecordMeterReading")}
-        />
-        <BillCard
-          onPress={() => navigation.navigate("RecordMeterReading")}
-        />
-        <BillCard
-          onPress={() => navigation.navigate("RecordMeterReading")}
-        />
-        <BillCard
-          onPress={() => navigation.navigate("RecordMeterReading")}
-        />
-        
+        <BillCard onPress={() => navigation.navigate("RecordMeterReading")} />
+        <BillCard onPress={() => navigation.navigate("RecordMeterReading")} />
+        <BillCard onPress={() => navigation.navigate("RecordMeterReading")} />
+        <BillCard onPress={() => navigation.navigate("RecordMeterReading")} />
       </ScrollView>
     </View>
   );
@@ -61,11 +62,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   HeaderContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     justifyContent: "space-around",
   },
-  buttonStyle:{
-    width:50,
+  buttonStyle: {
+    width: 50,
   },
   button: {
     backgroundColor: "#40916C",
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
   },
   button1: {
     backgroundColor: "#ffff",
-    padding:6,
+    padding: 6,
     width: "46%",
     height: 40,
     borderRadius: 8,
