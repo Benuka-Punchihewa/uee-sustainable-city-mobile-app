@@ -63,9 +63,10 @@ dropDownStyle:{
     borderColor: "#ccc",
 },
 selectedItemStyle:{
-    paddingVertical:8,
+    paddingVertical:10,
     borderRadius:4,
     marginBottom:2,
+    marginHorizontal:5,
 }
 
 });

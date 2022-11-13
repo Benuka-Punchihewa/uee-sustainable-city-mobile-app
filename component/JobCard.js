@@ -96,20 +96,6 @@ const Jobcard = ({ navigation }) => {
 
               <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
                 <View style={styles.CheckBoxcontainer}>
-                  {/* <View style={styles.checkboxContainer}>
-                  <RadioButton
-                      value={languageMyjobs.CATEGORY.ONLINE}
-                      // status={checked === languageMyjobs.CATEGORY.ONLINE ? "checked" : "unchecked"}
-                      color={"#2D6A4F"}
-                      onPress={() =>
-                        setChecked(languageMyjobs.CATEGORY.POINTS)
-                      }
-                    />
-                    <Text style={styles.label}>
-                      {languageMyjobs.PLASTIC[language]}
-                    </Text>
-                  </View> */}
-
                   <View style={styles.checkboxContainer}>
                     <RadioButton
                       value={languageMyjobs.CATEGORY.POINTS}
@@ -125,20 +111,6 @@ const Jobcard = ({ navigation }) => {
                       {languageMyjobs.FOOD_WASTE[language]}
                     </Text>
                   </View>
-
-                  {/* <View style={styles.checkboxContainer}>
-                  <RadioButton
-                       value={languageMyjobs.CATEGORY.ONLINE}
-                      status={checked === languageMyjobs.CATEGORY.ONLINE ? "checked" : "unchecked"}
-                      color={"#2D6A4F"}
-                      onPress={() =>
-                        setChecked(languageMyjobs.CATEGORY.ONLINE)
-                      }
-                    />
-                    <Text style={styles.label}>
-                      {languageMyjobs.PAPERS[language]}
-                    </Text>
-                  </View> */}
 
                   <View style={styles.checkboxContainer}>
                     <RadioButton
@@ -197,12 +169,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#D8F3DC",
     height: 150,
-    width: "90%",
+    width: "100%",
     borderTopLeftRadius: 32,
     borderBottomRightRadius: 32,
     marginBottom: 10,
     justifyContent: "space-between",
-    marginLeft: 18,
   },
   detailContainer: {
     flex: 1,
