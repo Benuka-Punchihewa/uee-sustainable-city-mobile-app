@@ -8,11 +8,11 @@ export default {
         SIN: "ලියාපදිංචි වන්න",
     },
     NEED_ACCOUNT: {
-        EN: "Already have an account?",
-        SIN: "දැනටමත් ගිණුමක් තිබේ?",
+        EN: "Don't have an account?",
+        SIN: "ඔබට දැනටමත් ගිණුමක් නැද්ද?",
     },
     WELCOME: {
-        EN: "WEL COME",
+        EN: "WELCOME",
         SIN: "පිළිගනිමු ",
     },
     SINHALA: {

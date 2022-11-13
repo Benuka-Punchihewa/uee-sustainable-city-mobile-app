@@ -140,7 +140,8 @@ const styles = StyleSheet.create({
   selectText: {
     flexDirection: "row",
     textAlign: "center",
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
+    marginTop:40,
   },
 });
 
