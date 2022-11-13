@@ -33,114 +33,155 @@ import { StatusBar, StyleSheet, View, text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import IoniconsIcon from "react-native-vector-icons/Ionicons";
+import { useSelector } from "react-redux";
 
 const Tab = createBottomTabNavigator();
 
 const HomeStack = () => {
+  const authState = useSelector((state) => state.auth);
+
   return (
     <View style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
-            name="GetStarted"
-            component={GetStarted}
-            options={options}
-          />
-          <Stack.Screen name="Login" component={Login} options={options} />
-          <Stack.Screen
-            name="Register"
-            component={Register}
-            options={options}
-          />
-          <Stack.Screen
-            name="ForgetPassword"
-            component={ForgetPassword}
-            options={options}
-          />
-          <Stack.Screen
-            name="Home"
-            component={NavigatorStack}
-            options={options}
-          />
-          <Stack.Screen
-            name="DonationThreadForm"
-            component={DonationThreadForm}
-            options={options}
-          />
-          <Stack.Screen
-            name="DonationMain"
-            component={DonationMain}
-            options={options}
-          />
-          <Stack.Screen
-            name="DonationForm"
-            component={DonationForm}
-            options={options}
-          />
-          <Stack.Screen
-            name="WaterBills"
-            component={WaterBills}
-            options={options}
-          />
-          <Stack.Screen
-            name="ElectricityBills"
-            component={ElectricityBills}
-            options={options}
-          />
-          <Stack.Screen name="MyJobs" component={MyJobs} options={options} />
-          <Stack.Screen
-            name="RecordMeterReading"
-            component={RecordMeterReading}
-            options={options}
-          />
-          <Stack.Screen name="Events" component={Events} options={options} />
-          <Stack.Screen
-            name="MyEventParticipated"
-            component={MyEventParticipated}
-            options={options}
-          />
-          <Stack.Screen name="MyEvent" component={MyEvent} options={options} />
-          <Stack.Screen
-            name="MyEventOrganized"
-            component={MyEventOrganized}
-            options={options}
-          />
-          <Stack.Screen
-            name="EventView"
-            component={EventView}
-            options={options}
-          />
-          <Stack.Screen
-            name="EventForm"
-            component={EventForm}
-            options={options}
-          />
+          {!authState.isLoggedIn ? (
+            <>
+              <Stack.Screen
+                name="GetStarted"
+                component={GetStarted}
+                options={options}
+              />
+              <Stack.Screen name="Login" component={Login} options={options} />
+              <Stack.Screen
+                name="Register"
+                component={Register}
+                options={options}
+              />
+              <Stack.Screen
+                name="ForgetPassword"
+                component={ForgetPassword}
+                options={options}
+              />
+            </>
+          ) : (
+            <>
+              {authState.userRole === "citizen" && (
+                <>
+                  <Stack.Screen
+                    name="Home"
+                    component={NavigatorStack}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="DonationThreadForm"
+                    component={DonationThreadForm}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="DonationMain"
+                    component={DonationMain}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="DonationForm"
+                    component={DonationForm}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="WaterBills"
+                    component={WaterBills}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="ElectricityBills"
+                    component={ElectricityBills}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="Events"
+                    component={Events}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="MyEventParticipated"
+                    component={MyEventParticipated}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="MyEvent"
+                    component={MyEvent}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="MyEventOrganized"
+                    component={MyEventOrganized}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="EventView"
+                    component={EventView}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="EventForm"
+                    component={EventForm}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="PendingEventView"
+                    component={PendingEventView}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="ParticipatedEventView"
+                    component={ParticipatedEventView}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="FeedbackForm"
+                    component={FeedbackForm}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="QRscanner"
+                    component={QRscanner}
+                    options={options}
+                  />
+                  <Stack.Screen
+                    name="MarkGabage"
+                    component={MarkGabage}
+                    options={options}
+                  />
+                </>
+              )}
 
-          <Stack.Screen
-            name="PendingEventView"
-            component={PendingEventView}
-            options={options}
-          />
-          <Stack.Screen
-            name="ParticipatedEventView"
-            component={ParticipatedEventView}
-            options={options}
-          />
-          <Stack.Screen
-            name="FeedbackForm"
-            component={FeedbackForm}
-            options={options}
-          />
-          <Stack.Screen
-            name="QRscanner"
-            component={QRscanner}
-            options={options}
-          />
-           <Stack.Screen
-            name="MarkGabage"
-            component={MarkGabage}
-            options={options}
-          />
+              {authState.userRole === "garbageCollector" && (
+                <>
+                  <Stack.Screen
+                    name="MyJobs"
+                    component={MyJobs}
+                    options={options}
+                  />
+                </>
+              )}
+
+              {authState.userRole === "meterReader" && (
+                <>
+                  <Stack.Screen
+                    name="RecordMeterReading"
+                    component={RecordMeterReading}
+                    options={options}
+                  />
+                </>
+              )}
+
+              <Stack.Screen
+                name="EmptyScreen"
+                component={EmptyScreen}
+                options={options}
+              />
+            </>
+          )}
         </Stack.Navigator>
       </NavigationContainer>
     </View>
@@ -217,6 +258,10 @@ const NavigatorStack = () => {
       />
     </Tab.Navigator>
   );
+};
+
+const EmptyScreen = () => {
+  return <></>;
 };
 
 export default HomeStack;
