@@ -14,6 +14,14 @@ export default {
     WELCOME: {
         EN: "WEL COME",
         SIN: "පිළිගනිමු ",
+    },
+    SINHALA: {
+        EN: "සිංහල",
+        SIN: "සිංහල",
+    },
+    ENGLISH: {
+        EN: "English",
+        SIN: "English",
     }
   };
   

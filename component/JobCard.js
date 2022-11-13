@@ -180,9 +180,11 @@ export default Jobcard;
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 20,
     flex: 1,
-    backgroundColor: "#fff",
+    margin: 2,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#E0F7FA",
   },
   bottomNavigationView: {
     backgroundColor: "#fff",

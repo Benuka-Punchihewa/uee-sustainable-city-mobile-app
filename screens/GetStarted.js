@@ -60,6 +60,21 @@ const GetStarted = ({ navigation }) => {
             title={languageMainHome.SIGN_UP[language]}
             onPress={() => navigation.navigate("Register")}
           />
+          <View>
+            <TouchableOpacity style={styles.selectText}>
+              <View style={styles.formInput}>
+                <Text style={styles.needAccount}>
+                  {languageMainHome.SINHALA[language]}
+                </Text>
+              </View>
+
+              <View style={styles.formInput}>
+                <Text style={styles.needAccount}>
+                  {languageMainHome.ENGLISH[language]}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -121,6 +136,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 16,
     color: "black",
+  },
+  selectText: {
+    flexDirection: "row",
+    textAlign: "center",
+    justifyContent: "space-around",
   },
 });
 
