@@ -99,25 +99,13 @@ const RecordMeterReading = ({ navigation }) => {
               placeholder={languageRecordMeterReading.CURRENT_READING[language]}
             />
           </View>
-
-          <View style={styles.formInput}>
-            <TouchableOpacity
-              style={styles.defaultButton}
-              onPress={() => {
-                navigation.navigate("ElectricityBills");
-              }}
-            >
-              <Text
-                style={{ textAlign: "center", fontSize: 16, color: "#fff" }}
-              >
-                {languageRecordMeterReading.PROCEED[language]}
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.formInput}>
-            <View style={styles.line}></View>
-          </View>
+        </View>
+        <View style={styles.btnWrapper}>
+          <TouchableOpacity style={styles.defaultButton}>
+            <Text style={{ textAlign: "center", fontSize: 16, color: "#fff" }}>
+              {languageRecordMeterReading.PROCEED[language]}
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
@@ -130,6 +118,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingLeft: 20,
     paddingRight: 20,
+    backgroundColor: "#fff",
   },
   wrapper: {
     flexDirection: "row",
@@ -144,6 +133,11 @@ const styles = StyleSheet.create({
   formInput: {
     marginTop: 10,
     padding: 5,
+  },
+  btnWrapper: {
+    flex: 1,
+    justifyContent: "flex-end",
+    marginBottom: 20,
   },
   textInput: {
     padding: 10,
