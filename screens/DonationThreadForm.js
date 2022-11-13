@@ -16,12 +16,10 @@ import { useDimensions } from "@react-native-community/hooks";
 import { useState } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const language = "SIN";
 
 const DonationThreadForm = () => {
-  const bottomNavigationHeight = useBottomTabBarHeight();
 
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
@@ -69,7 +67,6 @@ const DonationThreadForm = () => {
           minHeight:
             useDimensions().screen.height -
             StatusBar.currentHeight -
-            bottomNavigationHeight -
             10,
         }}
       >

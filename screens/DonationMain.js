@@ -12,12 +12,10 @@ import constants from "../constants";
 import languageDonationMain from "../language/language.donationMain";
 import ProgressBar from "react-native-progress/Bar";
 import { useDimensions } from "@react-native-community/hooks";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const language = "SIN";
 
 const DonationMain = ({ navigation }) => {
-  const bottomNavigationHeight = useBottomTabBarHeight();
   const handlePress = () => {};
 
   return (
@@ -28,7 +26,6 @@ const DonationMain = ({ navigation }) => {
           minHeight:
             useDimensions().screen.height -
             StatusBar.currentHeight -
-            bottomNavigationHeight -
             10,
         }}
       >

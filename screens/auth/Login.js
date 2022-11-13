@@ -10,13 +10,11 @@ import {
 } from "react-native";
 import languageLogin from "../../language/language.login";
 import { useDimensions } from "@react-native-community/hooks";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const language = "SIN";
 
 //login screen
 const Login = ({ navigation }) => {
-  const bottomNavigationHeight = useBottomTabBarHeight();
   return (
     <ScrollView>
       <View
@@ -25,7 +23,6 @@ const Login = ({ navigation }) => {
           minHeight:
             useDimensions().screen.height -
             StatusBar.currentHeight -
-            bottomNavigationHeight -
             10,
         }}
       >

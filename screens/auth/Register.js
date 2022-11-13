@@ -14,7 +14,6 @@ import languageRegister from "../../language/language.register";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import { useDimensions } from "@react-native-community/hooks";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const language = "SIN";
 
@@ -35,7 +34,6 @@ let data = [
 
 //Register screen
 const Register = ({ navigation }) => {
-  const bottomNavigationHeight = useBottomTabBarHeight();
 
   const [selectedItem, setSelectedItem] = useState(null);
   const [selectedItem2, setSelectedItem2] = useState(null);
@@ -73,7 +71,6 @@ const Register = ({ navigation }) => {
           minHeight:
             useDimensions().screen.height -
             StatusBar.currentHeight -
-            bottomNavigationHeight -
             10,
         }}
       >

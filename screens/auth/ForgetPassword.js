@@ -10,23 +10,18 @@ import {
 } from "react-native";
 import languageForgetpassword from "../../language/language.forgetpassword";
 import { useDimensions } from "@react-native-community/hooks";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const language = "SIN";
 
 //ForgetPassword screen
 const ForgetPassword = ({ navigation }) => {
-  const bottomNavigationHeight = useBottomTabBarHeight();
   return (
     <ScrollView>
       <View
         style={{
           ...styles.container,
           minHeight:
-            useDimensions().screen.height -
-            StatusBar.currentHeight -
-            bottomNavigationHeight -
-            10,
+            useDimensions().screen.height - StatusBar.currentHeight - 10,
         }}
       >
         <Text style={styles.header}>

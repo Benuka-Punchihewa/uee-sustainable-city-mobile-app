@@ -11,7 +11,6 @@ import {
 import DropDown from "../component/DropDown";
 import languageRecordMeterReading from "../language/language.RecordMeterReading";
 import { useDimensions } from "@react-native-community/hooks";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const language = "SIN";
 
@@ -32,7 +31,6 @@ let data = [
 
 //Register screen
 const RecordMeterReading = ({ navigation }) => {
-  const bottomNavigationHeight = useBottomTabBarHeight();
 
   const [selectedItem, setSelectedItem] = useState(null);
   const [selectedItem2, setSelectedItem2] = useState(null);
@@ -52,7 +50,6 @@ const RecordMeterReading = ({ navigation }) => {
           minHeight:
             useDimensions().screen.height -
             StatusBar.currentHeight -
-            bottomNavigationHeight -
             10,
         }}
       >

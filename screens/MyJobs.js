@@ -1,28 +1,23 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView} from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import JobCard from "../component/JobCard";
 import languageMyjobs from "../language/language.MyJobs";
 
 const language = "SIN";
 
 const MyJobs = ({ navigation }) => {
-
   return (
     <View style={styles.container}>
-
-      <Text style={styles.PageTitle}>
-        {languageMyjobs.MY_JOBS[language]}
-      </Text>
+      <Text style={styles.PageTitle}>{languageMyjobs.MY_JOBS[language]}</Text>
 
       <ScrollView
         style={styles.billContainer}
         showsVerticalScrollIndicator={false}
       >
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        
+        <JobCard />
+        <JobCard />
+        <JobCard />
+        <JobCard />
       </ScrollView>
     </View>
   );
@@ -30,8 +25,11 @@ const MyJobs = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 20,
     flex: 1,
     backgroundColor: "#fff",
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   PageTitle: {
     fontSize: 24,
@@ -42,11 +40,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   HeaderContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     justifyContent: "space-around",
   },
-  buttonStyle:{
-    width:50,
+  buttonStyle: {
+    width: 50,
   },
   button: {
     backgroundColor: "#40916C",
@@ -62,7 +60,7 @@ const styles = StyleSheet.create({
   },
   button1: {
     backgroundColor: "#ffff",
-    padding:6,
+    padding: 6,
     width: "46%",
     height: 40,
     borderRadius: 8,
