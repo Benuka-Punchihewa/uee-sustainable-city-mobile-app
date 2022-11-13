@@ -214,7 +214,7 @@ const EventForm = ({ navigation }) => {
           <Button
             type={constants.BUTTON_TYPES.FILLED}
             title={languageEventForm.PROCEED[language]}
-            onPress={handleProceed}
+            onPress={() => navigation.navigate("Events")}
           />
         </View>
       </View>

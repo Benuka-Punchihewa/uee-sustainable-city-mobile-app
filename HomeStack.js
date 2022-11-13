@@ -24,6 +24,7 @@ import FeedbackForm from "./screens/FeedbackForm";
 import DonationThreads from "./screens/DonationThreads";
 import Profile from "./screens/Profile";
 import MarkGabage from "./screens/MarkGabage";
+import Setting from "./screens/Setting";
 
 const options = { headerShown: false };
 
@@ -178,6 +179,11 @@ const HomeStack = () => {
               <Stack.Screen
                 name="EmptyScreen"
                 component={EmptyScreen}
+                options={options}
+              />
+              <Stack.Screen
+                name="Setting"
+                component={Setting}
                 options={options}
               />
             </>

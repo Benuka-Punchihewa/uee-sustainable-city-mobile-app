@@ -11,6 +11,7 @@ import languageHome from "../language/language.home";
 import { useDimensions } from "@react-native-community/hooks";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useSelector } from "react-redux";
+import EventCard from "../component/EventCard";
 
 const Home = ({ navigation }) => {
   const language = useSelector((state) => state.language.language);
@@ -57,6 +58,8 @@ const Home = ({ navigation }) => {
         </View>
 
         <Text style={styles.title}>Trending Events</Text>
+        <EventCard />
+        <EventCard />
 
         <Text style={styles.title}>Trending Donations</Text>
         <DonationThreadCard

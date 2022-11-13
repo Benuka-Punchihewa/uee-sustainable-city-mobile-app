@@ -1,9 +1,10 @@
-import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { Text, View, StyleSheet, ScrollView, StatusBar } from "react-native";
 import { useSelector } from "react-redux";
 import AddButton from "../component/AddButton";
 import EventCard from "../component/EventCard";
 import Search from "../component/Search";
 import languageEvents from "../language/language.events";
+import { useDimensions } from "@react-native-community/hooks";
 
 const Events = ({ navigation }) => {
   const language = useSelector((state) => state.language.language);
@@ -14,16 +15,25 @@ const Events = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <Text style={styles.title}>{languageEvents.EVENTS[language]}</Text>
-        <Search
-          placeholder={languageEvents.SEARCH_EVENT[language]}
-          onSearch={handleSearch}
-        />
-        <View style={styles.listContainer}>
+      <Text style={styles.title}>{languageEvents.EVENTS[language]}</Text>
+      <Search
+        placeholder={languageEvents.SEARCH_EVENT[language]}
+        onSearch={handleSearch}
+      />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.ScrollViewContainer}
+      >
+        <View
+          style={{
+            ...styles.listContainer,
+            minHeight:
+              useDimensions().screen.height - StatusBar.currentHeight - 10,
+          }}
+        >
           <EventCard onPress={() => navigation.navigate("EventView")} />
-          <EventCard />
-          <EventCard />
+          <EventCard onPress={() => navigation.navigate("EventView")} />
+          <EventCard onPress={() => navigation.navigate("EventView")} />
           <EventCard />
           <EventCard />
           <EventCard />
@@ -56,6 +66,9 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   listContainer: {
+    marginTop: 10,
+  },
+  ScrollViewContainer: {
     marginTop: 10,
   },
 });
