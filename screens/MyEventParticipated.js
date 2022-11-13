@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import languageMyevents from "../language/language.myevents";
 import EventCard from "../component/EventCard";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 const MyEventParticipated = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   const [value, setValue] = useState();
 
   return (

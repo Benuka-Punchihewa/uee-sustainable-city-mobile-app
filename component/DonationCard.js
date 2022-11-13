@@ -1,9 +1,11 @@
 import { View, StyleSheet, Text } from "react-native";
+import { useSelector } from "react-redux";
 import languageDonationMain from "../language/language.donationMain";
 
-const language = "SIN";
 
 const DonationCard = ({ donator, comment, donation, donationDate }) => {
+  const language = useSelector((state) => state.language.language);
+
   return (
     <View style={styles.container}>
       <Text style={styles.donator}>{donator}l</Text>

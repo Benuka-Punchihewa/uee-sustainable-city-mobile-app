@@ -12,11 +12,12 @@ import { BottomSheet } from "react-native-btr";
 import languageMyjobs from "../language/language.MyJobs";
 import { RadioButton } from "react-native-paper";
 import constants from "../constants";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 const Jobcard = ({ navigation }) => {
   const [visible, setVisible] = useState(false);
+
+  const language = useSelector((state) => state.language.language);
 
   const [isSelectedPlastic, setisSelectedPlastic] = useState(false);
   const [isSelectedFoodWaste, setisSelectedFoodWaste] = useState(false);

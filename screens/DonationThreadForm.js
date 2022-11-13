@@ -16,10 +16,10 @@ import { useDimensions } from "@react-native-community/hooks";
 import { useState } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 const DonationThreadForm = () => {
+  const language = useSelector((state) => state.language.language);
 
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
@@ -65,9 +65,7 @@ const DonationThreadForm = () => {
         style={{
           ...styles.container,
           minHeight:
-            useDimensions().screen.height -
-            StatusBar.currentHeight -
-            10,
+            useDimensions().screen.height - StatusBar.currentHeight - 10,
         }}
       >
         <Text style={styles.PageTitle}>

@@ -12,10 +12,11 @@ import constants from "../constants";
 import languageDonationMain from "../language/language.donationMain";
 import ProgressBar from "react-native-progress/Bar";
 import { useDimensions } from "@react-native-community/hooks";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 const DonationMain = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   const handlePress = () => {};
 
   return (
@@ -24,9 +25,7 @@ const DonationMain = ({ navigation }) => {
         style={{
           ...styles.container,
           minHeight:
-            useDimensions().screen.height -
-            StatusBar.currentHeight -
-            10,
+            useDimensions().screen.height - StatusBar.currentHeight - 10,
         }}
       >
         <Image

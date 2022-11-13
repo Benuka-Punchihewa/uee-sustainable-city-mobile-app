@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Button } from "react-native";
 import languageQrScanner from "../language/language.qrScanner";
 import { BarCodeScanner } from "expo-barcode-scanner";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 const QRscanner = () => {
+  const language = useSelector((state) => state.language.language);
+
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 

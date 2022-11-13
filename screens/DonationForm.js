@@ -12,10 +12,10 @@ import languageDonationForm from "../language/language.donationForm";
 import { RadioButton } from "react-native-paper";
 import Button from "../component/Button";
 import { useDimensions } from "@react-native-community/hooks";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 const DonationForm = () => {
+  const language = useSelector((state) => state.language.language);
 
   const [checked, setChecked] = useState(constants.PAYMENT_METHODS.POINTS);
 
@@ -27,9 +27,7 @@ const DonationForm = () => {
         style={{
           ...styles.container,
           minHeight:
-            useDimensions().screen.height -
-            StatusBar.currentHeight -
-            10,
+            useDimensions().screen.height - StatusBar.currentHeight - 10,
         }}
       >
         <Text style={styles.PageTitle}>

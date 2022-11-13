@@ -1,9 +1,10 @@
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { useSelector } from "react-redux";
 import languageMyBills from "../language/language.MyBills";
 
-const language = "SIN";
-
 const BillCard = ({ onPress }) => {
+  const language = useSelector((state) => state.language.language);
+
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.detailContainer}>

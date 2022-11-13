@@ -10,20 +10,19 @@ import {
 } from "react-native";
 import languageLogin from "../../language/language.login";
 import { useDimensions } from "@react-native-community/hooks";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 //login screen
 const Login = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   return (
     <ScrollView>
       <View
         style={{
           ...styles.container,
           minHeight:
-            useDimensions().screen.height -
-            StatusBar.currentHeight -
-            10,
+            useDimensions().screen.height - StatusBar.currentHeight - 10,
         }}
       >
         <Text style={styles.header}>{languageLogin.SIGN_IN[language]}</Text>

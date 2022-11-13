@@ -12,10 +12,11 @@ import IoniconsIcon from "react-native-vector-icons/Ionicons";
 import languageProfile from "../language/language.profile";
 import { useDimensions } from "@react-native-community/hooks";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 const Profile = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   const bottomNavigationHeight = useBottomTabBarHeight();
   const onEditPress = () => {};
 

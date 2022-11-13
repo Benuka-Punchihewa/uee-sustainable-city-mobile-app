@@ -17,10 +17,11 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import DocumentPicker from "react-native-document-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 const EventForm = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [venue, setVenue] = useState("");

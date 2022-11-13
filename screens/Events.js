@@ -1,12 +1,13 @@
 import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { useSelector } from "react-redux";
 import AddButton from "../component/AddButton";
 import EventCard from "../component/EventCard";
 import Search from "../component/Search";
 import languageEvents from "../language/language.events";
 
-const language = "SIN";
-
 const Events = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   const handleSearch = (value) => {
     console.log(value);
   };

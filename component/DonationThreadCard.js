@@ -1,9 +1,8 @@
 import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
 import ProgressBar from "react-native-progress/Bar";
+import { useSelector } from "react-redux";
 import constants from "../constants";
 import languageDonationCard from "../language/language.donationCard";
-
-const language = "SIN";
 
 const DonationThreadCard = ({
   imageURI,
@@ -13,6 +12,8 @@ const DonationThreadCard = ({
   progress,
   onPress,
 }) => {
+  const language = useSelector((state) => state.language.language);
+
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.imgContainer}>

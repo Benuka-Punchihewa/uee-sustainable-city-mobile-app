@@ -2,10 +2,11 @@ import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
 import constants from "../constants";
 import Button from "../component/Button";
 import languageParticipatedEventView from "../language/language.participatedEventView";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 const ParticipatedEventView = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   return (
     <View style={styles.container}>
       <View>

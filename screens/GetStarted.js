@@ -12,11 +12,12 @@ import languageMainHome from "../language/language.MainHome";
 import Button from "../component/Button";
 import constants from "../constants";
 import { useDimensions } from "@react-native-community/hooks";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 //Splash screen
 const GetStarted = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   return (
     <ScrollView>
       <View
@@ -45,15 +46,9 @@ const GetStarted = ({ navigation }) => {
           />
 
           <View style={styles.formInput}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("Register");
-              }}
-            >
-              <Text style={styles.needAccount}>
-                {languageMainHome.NEED_ACCOUNT[language]}
-              </Text>
-            </TouchableOpacity>
+            <Text style={styles.needAccount}>
+              {languageMainHome.NEED_ACCOUNT[language]}
+            </Text>
           </View>
 
           <View style={styles.formInput}>

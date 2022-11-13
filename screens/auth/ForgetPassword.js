@@ -10,11 +10,12 @@ import {
 } from "react-native";
 import languageForgetpassword from "../../language/language.forgetpassword";
 import { useDimensions } from "@react-native-community/hooks";
-
-const language = "SIN";
+import { useSelector } from "react-redux";
 
 //ForgetPassword screen
 const ForgetPassword = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   return (
     <ScrollView>
       <View

@@ -1,11 +1,14 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { useSelector } from "react-redux";
 import JobCard from "../component/JobCard";
 import languageMyjobs from "../language/language.MyJobs";
 
-const language = "SIN";
+
 
 const MyJobs = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   return (
     <View style={styles.container}>
       <Text style={styles.PageTitle}>{languageMyjobs.MY_JOBS[language]}</Text>

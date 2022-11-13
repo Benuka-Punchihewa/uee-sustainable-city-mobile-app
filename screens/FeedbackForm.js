@@ -3,10 +3,13 @@ import languageFeedbackForm from "../language/language.feedbackForm";
 import constants from "../constants";
 import Button from "../component/Button";
 import { Rating } from "react-native-rating-element";
+import { useSelector } from "react-redux";
 
 const language = "SIN";
 
 const FeedbackForm = () => {
+  const language = useSelector((state) => state.language.language);
+
   const hanclePost = () => {};
   return (
     <View style={styles.container}>

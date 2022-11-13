@@ -6,11 +6,12 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import { useSelector } from "react-redux";
 import constants from "../constants";
 
-const language = "SIN";
-
 const EventView = ({ navigation }) => {
+  const language = useSelector((state) => state.language.language);
+
   return (
     <View style={styles.container}>
       <View>

@@ -1,9 +1,10 @@
 import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
+import { useSelector } from "react-redux";
 import constants from "../constants";
 
-const language = "SIN";
-
 const EventCard = ({ onPress }) => {
+  const language = useSelector((state) => state.language.language);
+
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.imgContainer}>
