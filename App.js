@@ -6,6 +6,7 @@ import IoniconsIcon from "react-native-vector-icons/Ionicons";
 import DonationThreads from "./screens/DonationThreads";
 import Profile from "./screens/Profile";
 import HomeStack from "./HomeStack";
+import Events from "./screens/Events";
 
 const Tab = createBottomTabNavigator();
 
@@ -34,7 +35,7 @@ export default function App() {
 
           <Tab.Screen
             name="Events"
-            component={Profile}
+            component={Events}
             options={{
               tabBarLabel: "Events",
               tabBarIcon: ({ color, size }) => (

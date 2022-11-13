@@ -1,12 +1,11 @@
-import React from "react";
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
 import constants from "../constants";
 
 const language = "SIN";
 
-const EventCard = () => {
+const EventCard = ({ onPress }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.imgContainer}>
         <Image
           source={{
@@ -43,7 +42,7 @@ const EventCard = () => {
           )}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

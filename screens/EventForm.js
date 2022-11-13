@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Text,
   View,
@@ -12,21 +12,51 @@ import languageEventForm from "../language/language.eventForm";
 import { useDimensions } from "@react-native-community/hooks";
 import constants from "../constants";
 import Button from "../component/Button";
+import CustomButton from "../component/Button";
 import Icon from "react-native-vector-icons/FontAwesome";
 import DocumentPicker from "react-native-document-picker";
-import DatePicker from "react-native-modern-datepicker";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import moment from "moment";
 
 const language = "SIN";
 
-const EventForm = () => {
+const EventForm = ({ navigation }) => {
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState(new Date());
   const [venue, setVenue] = useState("");
   const [description, setDescription] = useState("");
-  const [open, setOpen] = useState(false);
+  const [targetDate, setTargetDate] = useState(new Date());
+  const [time, setTime] = useState(new Date());
+  const [show, setShow] = useState(false);
+  const [timeShow, setTimeShow] = useState(false);
 
-  const [selectedDate, setSelectedDate] = useState("");
+  const onDateChange = (event, selectedDate) => {
+    const currentDate = selectedDate;
+    setShow(false);
+    setTargetDate(currentDate);
+  };
+
+  const showDatepicker = () => {
+    setShow(true);
+  };
+
+  const getFormattedDate = (dateObj) => {
+    return moment(dateObj).format("YYYY-MM-DD");
+  };
+
+  const onTimeChange = (event, selectedTime) => {
+    const currentTime = selectedTime;
+    setTimeShow(false);
+    setTime(currentTime);
+  };
+
+  const showTimepicker = () => {
+    setTimeShow(true);
+  };
+
+  const getFormattedTime = (timeObj) => {
+    return moment(timeObj).format("h:mm");
+  };
 
   const handleImagePickerButtonPress = async () => {
     try {
@@ -73,34 +103,50 @@ const EventForm = () => {
           </View>
         </View>
 
+        {/* date */}
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>
             {languageEventForm.DATE[language]}
           </Text>
-          <View style={styles.txtInputContainer} onPress={() => setOpen(true)}>
-            <TextInput
-              style={styles.input}
-              placeholder={languageEventForm.EVENT_TITLE_PLACEHOLDER[language]}
-              selectionColor={"#000"}
-              onChangeText={(val) => setTitle(val)}
-              underlineColorAndroid="transparent"
+          <CustomButton
+            type={constants.BUTTON_TYPES.OUTLINED}
+            title={languageEventForm.DATE_BTN_TEXT[language]}
+            onPress={showDatepicker}
+          />
+          <Text style={styles.dateTxt}>
+            {languageEventForm.SELECTED_DATE[language]}:&nbsp;
+            {getFormattedDate(targetDate)}
+          </Text>
+          {show && (
+            <DateTimePicker
+              value={targetDate}
+              mode={"date"}
+              onChange={onDateChange}
             />
-          </View>
+          )}
         </View>
 
+        {/* time */}
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>
             {languageEventForm.TIME[language]}
           </Text>
-          <View style={styles.txtInputContainer}>
-            <TextInput
-              style={styles.input}
-              placeholder={languageEventForm.EVENT_TITLE_PLACEHOLDER[language]}
-              selectionColor={"#000"}
-              onChangeText={(val) => setTitle(val)}
-              underlineColorAndroid="transparent"
+          <CustomButton
+            type={constants.BUTTON_TYPES.OUTLINED}
+            title={languageEventForm.TIME_BTN_TEXT[language]}
+            onPress={showTimepicker}
+          />
+          <Text style={styles.dateTxt}>
+            {languageEventForm.SELECTED_TIME[language]}:&nbsp;
+            {getFormattedTime(time)}
+          </Text>
+          {timeShow && (
+            <DateTimePicker
+              value={time}
+              mode={"time"}
+              onChange={onTimeChange}
             />
-          </View>
+          )}
         </View>
 
         <View style={styles.inputContainer}>
@@ -166,7 +212,7 @@ const EventForm = () => {
         <View style={styles.proceedBtnContainer}>
           <Button
             type={constants.BUTTON_TYPES.FILLED}
-            title={languageEventForm.CREATE[language]}
+            title={languageEventForm.PROCEED[language]}
             onPress={handleProceed}
           />
         </View>
@@ -179,6 +225,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   PageTitle: {
     fontSize: 24,
@@ -247,6 +296,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     marginTop: 30,
     marginBottom: 10,
+  },
+  dateTxt: {
+    fontSize: 14,
   },
 });
 

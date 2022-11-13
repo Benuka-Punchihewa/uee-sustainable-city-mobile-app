@@ -23,10 +23,6 @@ export default {
     EN: "Upload Image",
     SIN: "රූපය උඩුගත කරන්න",
   },
-  CREATE: {
-    EN: "Create",
-    SIN: "සාදන්න",
-  },
   DATE: {
     EN: "Date",
     SIN: "දිනය",
@@ -42,5 +38,25 @@ export default {
   VENUE_PLACEHOLDER: {
     EN: "Enter the venue",
     SIN: "ස්ථානය ඇතුලත් කරන්න",
+  },
+  DATE_BTN_TEXT: {
+    EN: "Select Date",
+    SIN: "දිනය තෝරන්න",
+  },
+  SELECTED_DATE: {
+    EN: "Selected Date",
+    SIN: "තෝරාගත් දිනය ",
+  },
+  TIME_BTN_TEXT: {
+    EN: "Select Time",
+    SIN: "වේලාව තෝරන්න",
+  },
+  SELECTED_TIME: {
+    EN: "Selected Time",
+    SIN: "තෝරාගත් වේලාව ",
+  },
+  PROCEED: {
+    EN: "PROCEED",
+    SIN: "ඉදිරියට යන්න",
   },
 };

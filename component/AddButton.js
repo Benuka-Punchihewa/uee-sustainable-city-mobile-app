@@ -1,14 +1,13 @@
-import React from "react";
-import { Button, View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-const AddButton = () => {
+const AddButton = ({ onPress }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.btn}>
         <Icon name="plus" size={36} color="#fff" />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

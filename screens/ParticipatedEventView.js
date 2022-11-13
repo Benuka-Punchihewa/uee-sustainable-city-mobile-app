@@ -1,16 +1,11 @@
-import {
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
 import constants from "../constants";
+import Button from "../component/Button";
+import languageParticipatedEventView from "../language/language.participatedEventView";
 
 const language = "SIN";
 
-const EventView = ({ navigation }) => {
+const ParticipatedEventView = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View>
@@ -51,26 +46,13 @@ const EventView = ({ navigation }) => {
           </Text>
         </View>
       </View>
-      <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.btnborder}>
-          <Text style={styles.btnSecText}>
-            {language === constants.LANGUAGES.ENGLISH ? (
-              <>Make a Donation</>
-            ) : (
-              <>පරිත්‍යාගයක් කරන්න</>
-            )}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.btn}>
-          <Text style={styles.btnText}>
-            {language === constants.LANGUAGES.ENGLISH ? (
-              <>participate</>
-            ) : (
-              <>සහභාගිවන්න</>
-            )}
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <Button
+        type={constants.BUTTON_TYPES.FILLED}
+        title={languageParticipatedEventView.GIVE_A_FEEDBACK[language]}
+        marginTop={120}
+        marginBottom={4}
+        onPress={() => navigation.navigate("FeedbackForm")}
+      />
     </View>
   );
 };
@@ -107,35 +89,6 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 18,
   },
-  btnContainer: {
-    flex: 1,
-    top: 100,
-  },
-  btn: {
-    height: 60,
-    marginTop: 10,
-    backgroundColor: "#40916C",
-    borderRadius: 12,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  btnText: {
-    color: "#fff",
-    fontSize: 20,
-  },
-  btnborder: {
-    height: 60,
-    marginTop: 10,
-    borderColor: "#40916C",
-    borderWidth: 5,
-    borderRadius: 12,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  btnSecText: {
-    color: "#40916C",
-    fontSize: 20,
-  },
 });
 
-export default EventView;
+export default ParticipatedEventView;

@@ -5,7 +5,7 @@ import EventCard from "../component/EventCard";
 
 const language = "SIN";
 
-const MyEvent = ({ navigation }) => {
+const MyEventParticipated = ({ navigation }) => {
   const [value, setValue] = useState();
 
   return (
@@ -14,22 +14,21 @@ const MyEvent = ({ navigation }) => {
         {languageMyevents.MY_EVENTS[language]}
       </Text>
       <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.btn}>
-          <Text style={styles.btnText}>
+        <TouchableOpacity
+          style={styles.btnborder}
+          onPress={() => navigation.navigate("MyEvent")}
+        >
+          <Text style={styles.btnSecText}>
             {languageMyevents.PENDING[language]}
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.btnborder}
-          onPress={() => navigation.navigate("MyEventParticipated")}
-        >
-          <Text style={styles.btnSecText}>
+        <TouchableOpacity style={styles.btn}>
+          <Text style={styles.btnText}>
             {languageMyevents.COMPLETED[language]}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.btnborder}
-          MyEventOrganized
           onPress={() => navigation.navigate("MyEventOrganized")}
         >
           <Text style={styles.btnSecText}>
@@ -38,8 +37,9 @@ const MyEvent = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <View style={styles.listContainer}>
-        <EventCard onPress={() => navigation.navigate("PendingEventView")} />
-        <EventCard />
+        <EventCard
+          onPress={() => navigation.navigate("ParticipatedEventView")}
+        />
         <EventCard />
       </View>
     </View>
@@ -94,4 +94,4 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
-export default MyEvent;
+export default MyEventParticipated;

@@ -1,4 +1,3 @@
-import React from "react";
 import { View, StyleSheet, Text, TextInput } from "react-native";
 import languageFeedbackForm from "../language/language.feedbackForm";
 import constants from "../constants";
@@ -61,6 +60,10 @@ const FeedbackForm = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   PageTitle: {
     fontSize: 24,
@@ -79,6 +82,7 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 16,
     fontWeight: "bold",
+    marginBottom: 4,
   },
   multiLnTxtInputContainer: {
     height: 200,

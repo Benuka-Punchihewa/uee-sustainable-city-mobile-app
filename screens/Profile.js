@@ -79,7 +79,10 @@ const Profile = ({ navigation }) => {
         <Text style={styles.optionTitle}>Options</Text>
         <View style={styles.optionsContainer}>
           {/* Event */}
-          <TouchableOpacity style={{ ...styles.option, marginRight: 5 }}>
+          <TouchableOpacity
+            style={{ ...styles.option, marginRight: 5 }}
+            onPress={() => navigation.navigate("MyEvent")}
+          >
             <IoniconsIcon name="earth" size={30} color="#000" />
             <Text style={styles.optionLabel}>
               {languageProfile.EVENT[language]}

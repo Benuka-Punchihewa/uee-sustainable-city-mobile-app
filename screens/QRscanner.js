@@ -51,9 +51,12 @@ const QRscanner = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 5,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   PageTitle: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "bold",
     marginBottom: 30,
   },
