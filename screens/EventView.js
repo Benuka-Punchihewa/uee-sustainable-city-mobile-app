@@ -89,12 +89,10 @@ const EventView = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
     paddingTop: 20,
     paddingLeft: 20,
     paddingRight: 20,
-  },
-  ScrollViewContainer: {
-    marginTop: 10,
   },
   title: {
     fontSize: 28,
@@ -122,7 +120,8 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     flex: 1,
-    top: 100,
+    justifyContent: "flex-end",
+    marginBottom: 20,
   },
   btn: {
     height: 60,

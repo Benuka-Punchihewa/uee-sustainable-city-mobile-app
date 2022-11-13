@@ -10,28 +10,34 @@ import {
 } from "react-native";
 import languageSetting from "../language/language.setting";
 import { useDimensions } from "@react-native-community/hooks";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DropDown from "../component/DropDown";
 import constants from "../constants";
 import Button from "../component/Button";
+import { languageActions } from "../store/languageSlice";
 
 let data = [
   {
     id: 1,
     name: "English",
+    val: constants.LANGUAGES.ENGLISH,
   },
   {
     id: 2,
     name: "සිංහල",
+    val: constants.LANGUAGES.SINHALA,
   },
 ];
 
 const Setting = ({ navigation }) => {
+  const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
+
   const [selectedItem, setSelectedItem] = useState(null);
 
   const onSelect = (item) => {
     setSelectedItem(item);
+    dispatch(languageActions.changeLanguage(item.val));
   };
 
   return (
@@ -55,7 +61,6 @@ const Setting = ({ navigation }) => {
           <Button
             type={constants.BUTTON_TYPES.OUTLINED}
             title={languageSetting.LOGOUT[language]}
-            // onPress={hanclePost}
           />
         </View>
       </View>
@@ -91,9 +96,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   btnContainer: {
-    flexDirection: "column-reverse",
+    flex: 1,
     justifyContent: "flex-end",
-    marginTop: 420,
     marginBottom: 10,
   },
 });
