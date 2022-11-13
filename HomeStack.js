@@ -23,6 +23,7 @@ import ParticipatedEventView from "./screens/ParticipatedEventView";
 import FeedbackForm from "./screens/FeedbackForm";
 import DonationThreads from "./screens/DonationThreads";
 import Profile from "./screens/Profile";
+import Setting from "./screens/Setting";
 
 const options = { headerShown: false };
 
@@ -114,7 +115,6 @@ const HomeStack = () => {
             component={EventForm}
             options={options}
           />
-
           <Stack.Screen
             name="PendingEventView"
             component={PendingEventView}
@@ -135,6 +135,8 @@ const HomeStack = () => {
             component={QRscanner}
             options={options}
           />
+
+          <Stack.Screen name="Setting" component={Setting} options={options} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>

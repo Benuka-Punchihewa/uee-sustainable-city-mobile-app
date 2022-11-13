@@ -43,7 +43,7 @@ const Profile = ({ navigation }) => {
           <Text style={styles.address}>No 987/1, Apple Rd., Pineapple</Text>
           <TouchableOpacity
             uppercase={false}
-            onPress={onEditPress}
+            onPress={() => navigation.navigate("Setting")}
             style={styles.profileEditBtn}
           >
             <Text style={styles.profileEditBtnTxt}>

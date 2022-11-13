@@ -1,8 +1,16 @@
 import { useState } from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  StatusBar,
+  ScrollView,
+} from "react-native";
 import languageMyevents from "../language/language.myevents";
 import EventCard from "../component/EventCard";
 import { useSelector } from "react-redux";
+import { useDimensions } from "@react-native-community/hooks";
 
 const MyEvent = ({ navigation }) => {
   const language = useSelector((state) => state.language.language);
@@ -10,40 +18,48 @@ const MyEvent = ({ navigation }) => {
   const [value, setValue] = useState();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.PageTitle}>
-        {languageMyevents.MY_EVENTS[language]}
-      </Text>
-      <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.btn}>
-          <Text style={styles.btnText}>
-            {languageMyevents.PENDING[language]}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.btnborder}
-          onPress={() => navigation.navigate("MyEventParticipated")}
-        >
-          <Text style={styles.btnSecText}>
-            {languageMyevents.COMPLETED[language]}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.btnborder}
-          MyEventOrganized
-          onPress={() => navigation.navigate("MyEventOrganized")}
-        >
-          <Text style={styles.btnSecText}>
-            {languageMyevents.ORGANIZED[language]}
-          </Text>
-        </TouchableOpacity>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View
+        style={{
+          ...styles.container,
+          minHeight:
+            useDimensions().screen.height - StatusBar.currentHeight - 10,
+        }}
+      >
+        <Text style={styles.PageTitle}>
+          {languageMyevents.MY_EVENTS[language]}
+        </Text>
+        <View style={styles.btnContainer}>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.btnText}>
+              {languageMyevents.PENDING[language]}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.btnborder}
+            onPress={() => navigation.navigate("MyEventParticipated")}
+          >
+            <Text style={styles.btnSecText}>
+              {languageMyevents.COMPLETED[language]}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.btnborder}
+            MyEventOrganized
+            onPress={() => navigation.navigate("MyEventOrganized")}
+          >
+            <Text style={styles.btnSecText}>
+              {languageMyevents.ORGANIZED[language]}
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.listContainer}>
+          <EventCard onPress={() => navigation.navigate("PendingEventView")} />
+          <EventCard />
+          <EventCard />
+        </View>
       </View>
-      <View style={styles.listContainer}>
-        <EventCard onPress={() => navigation.navigate("PendingEventView")} />
-        <EventCard />
-        <EventCard />
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 
