@@ -116,7 +116,7 @@ const Profile = ({ navigation }) => {
           {/* Garbage */}
           <TouchableOpacity
             style={{ ...styles.option, marginLeft: 5 }}
-            onPress={() => navigation.navigate("MyJobs")}
+            onPress={() => navigation.navigate("MarkGabage")}
           >
             <IoniconsIcon name="trash-bin" size={30} color="#000" />
             <Text style={styles.optionLabel}>
