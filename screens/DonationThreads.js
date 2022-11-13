@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { useSelector } from "react-redux";
+import AddButton from "../component/AddButton";
 import DonationThreadCard from "../component/DonationThreadCard";
 import Search from "../component/Search";
 import languageDonation from "../language/language.donation";
@@ -47,6 +48,9 @@ const DonationThreads = ({ navigation }) => {
           onPress={() => navigation.navigate("DonationMain")}
         />
       </ScrollView>
+      <View style={styles.addBtnContainer}>
+        <AddButton onPress={() => navigation.navigate("DonationThreadForm")} />
+      </View>
     </View>
   );
 };
@@ -66,6 +70,11 @@ const styles = StyleSheet.create({
   },
   donationsContainer: {
     marginTop: 20,
+  },
+  addBtnContainer: {
+    bottom: 40,
+    right: 10,
+    position: "absolute",
   },
 });
 

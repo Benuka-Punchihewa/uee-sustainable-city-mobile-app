@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   TouchableOpacity,
@@ -10,11 +10,42 @@ import {
 } from "react-native";
 import languageLogin from "../../language/language.login";
 import { useDimensions } from "@react-native-community/hooks";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../service/auth.service";
+import { authActions } from "../../store/authSlice";
 
 //login screen
 const Login = ({ navigation }) => {
+  const dispatch = useDispatch();
+
   const language = useSelector((state) => state.language.language);
+
+  const [username, setUserName] = useState();
+  const [password, setPassword] = useState();
+
+  const handleSubmit = async () => {
+    const data = {
+      username: username,
+      password: password,
+    };
+
+    const response = await login(data);
+
+    if (response.success) {
+      // dispatch login action
+      dispatch(
+        authActions.login({
+          token: response.data.token,
+          userId: response.data.user._id,
+          userName: response.data.user.name,
+          userRole: response.data.user.role,
+        })
+      );
+    } else {
+      //display the error message
+      response?.data?.message && alert(response?.data?.message);
+    }
+  };
 
   return (
     <ScrollView>
@@ -32,6 +63,8 @@ const Login = ({ navigation }) => {
             <TextInput
               style={styles.textInput}
               placeholder={languageLogin.USER_NAME[language]}
+              onChangeText={(value) => setUserName(value)}
+              defaultValue={username}
             />
           </View>
 
@@ -41,6 +74,8 @@ const Login = ({ navigation }) => {
               style={styles.textInput}
               placeholder={languageLogin.PASSWORD[language]}
               secureTextEntry={true}
+              onChangeText={(value) => setPassword(value)}
+              defaultValue={password}
             />
           </View>
 
@@ -59,9 +94,7 @@ const Login = ({ navigation }) => {
           <View style={styles.formInput}>
             <TouchableOpacity
               style={styles.defaultButton}
-              onPress={() => {
-                navigation.navigate("Home");
-              }}
+              onPress={handleSubmit}
             >
               <Text style={styles.loginbutton}>
                 {languageLogin.LOGIN[language]}

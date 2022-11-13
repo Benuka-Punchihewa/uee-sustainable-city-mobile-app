@@ -1,4 +1,6 @@
 export default {
+  API_BASE_URL: "https://uee-sustainable-city-app.herokuapp.com/api/v1/",
+
   LANGUAGES: {
     ENGLISH: "EN",
     SINHALA: "SIN",
@@ -12,4 +14,3 @@ export default {
     ONLINE: "online",
   },
 };
-

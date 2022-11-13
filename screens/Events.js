@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   btncontainer: {
-    bottom: 60,
-    right: 20,
+    bottom: 40,
+    right: 10,
     position: "absolute",
   },
   listContainer: {
