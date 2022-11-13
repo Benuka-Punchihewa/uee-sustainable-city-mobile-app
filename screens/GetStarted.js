@@ -12,11 +12,17 @@ import languageMainHome from "../language/language.MainHome";
 import Button from "../component/Button";
 import constants from "../constants";
 import { useDimensions } from "@react-native-community/hooks";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { languageActions } from "../store/languageSlice";
 
 //Splash screen
 const GetStarted = ({ navigation }) => {
+  const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
+
+  const handleLangChange = (lang) => {
+    dispatch(languageActions.changeLanguage(lang));
+  };
 
   return (
     <ScrollView>
@@ -60,14 +66,25 @@ const GetStarted = ({ navigation }) => {
             title={languageMainHome.SIGN_UP[language]}
             onPress={() => navigation.navigate("Register")}
           />
-          <View>
-            <TouchableOpacity style={styles.selectText}>
+        </View>
+
+        <View style={styles.languageSelectContainer}>
+          <View style={styles.languageWrapper}>
+            <TouchableOpacity
+              style={styles.selectText}
+              onPress={() => handleLangChange(constants.LANGUAGES.SINHALA)}
+            >
               <View style={styles.formInput}>
                 <Text style={styles.needAccount}>
                   {languageMainHome.SINHALA[language]}
                 </Text>
               </View>
+            </TouchableOpacity>
 
+            <TouchableOpacity
+              style={styles.selectText}
+              onPress={() => handleLangChange(constants.LANGUAGES.ENGLISH)}
+            >
               <View style={styles.formInput}>
                 <Text style={styles.needAccount}>
                   {languageMainHome.ENGLISH[language]}
@@ -137,11 +154,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "black",
   },
-  selectText: {
+  languageSelectContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    marginTop: 30,
+    marginBottom: 20,
+  },
+  languageWrapper: {
     flexDirection: "row",
-    textAlign: "center",
-    justifyContent: "space-evenly",
-    marginTop:40,
+    justifyContent: "center",
   },
 });
 
