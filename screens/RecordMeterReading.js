@@ -12,6 +12,7 @@ import DropDown from "../component/DropDown";
 import languageRecordMeterReading from "../language/language.RecordMeterReading";
 import { useDimensions } from "@react-native-community/hooks";
 import { useSelector } from "react-redux";
+import Icon from "react-native-vector-icons/Ionicons";
 
 let data = [
   {
@@ -51,9 +52,16 @@ const RecordMeterReading = ({ navigation }) => {
             useDimensions().screen.height - StatusBar.currentHeight - 10,
         }}
       >
-        <Text style={styles.PageTitle}>
-          {languageRecordMeterReading.CURRENT_READING[language]}
-        </Text>
+        <View style={styles.wrapper}>
+          <Text style={styles.PageTitle}>
+            {languageRecordMeterReading.CURRENT_READING[language]}
+          </Text>
+          <View>
+            <TouchableOpacity onPress={() => navigation.navigate("Setting")}>
+              <Icon name="ios-settings-outline" size={24} color="#000" />
+            </TouchableOpacity>
+          </View>
+        </View>
 
         <Text style={styles.text}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -123,6 +131,11 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
   },
+  wrapper: {
+    flexDirection: "row",
+    alignContent: "center",
+    justifyContent: "space-between",
+  },
   defaultBg: {
     width: "100%",
     height: 200,
@@ -149,6 +162,7 @@ const styles = StyleSheet.create({
     color: "black",
     justifyContent: "center",
     textAlign: "center",
+    marginTop: 20,
     marginBottom: 30,
   },
   header: {

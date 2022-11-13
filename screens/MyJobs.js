@@ -1,17 +1,24 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { useSelector } from "react-redux";
 import JobCard from "../component/JobCard";
 import languageMyjobs from "../language/language.MyJobs";
-
-
+import Icon from "react-native-vector-icons/Ionicons";
 
 const MyJobs = ({ navigation }) => {
   const language = useSelector((state) => state.language.language);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.PageTitle}>{languageMyjobs.MY_JOBS[language]}</Text>
+      <View style={styles.wrapper}>
+        <Text style={styles.PageTitle}>{languageMyjobs.MY_JOBS[language]}</Text>
+        <View>
+          <TouchableOpacity onPress={() => navigation.navigate("Setting")}>
+            <Icon name="ios-settings-outline" size={24} color="#000" />
+          </TouchableOpacity>
+        </View>
+      </View>
 
       <ScrollView
         style={styles.billContainer}
@@ -33,6 +40,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     paddingLeft: 20,
     paddingRight: 20,
+  },
+  wrapper: {
+    flexDirection: "row",
+    alignContent: "center",
+    justifyContent: "space-between",
   },
   PageTitle: {
     fontSize: 24,

@@ -15,6 +15,7 @@ import DropDown from "../component/DropDown";
 import constants from "../constants";
 import Button from "../component/Button";
 import { languageActions } from "../store/languageSlice";
+import { authActions } from "../store/authSlice";
 
 let data = [
   {
@@ -40,6 +41,10 @@ const Setting = ({ navigation }) => {
     dispatch(languageActions.changeLanguage(item.val));
   };
 
+  const handleLogout = () => {
+    dispatch(authActions.logout());
+  };
+
   return (
     <ScrollView>
       <View
@@ -61,6 +66,7 @@ const Setting = ({ navigation }) => {
           <Button
             type={constants.BUTTON_TYPES.OUTLINED}
             title={languageSetting.LOGOUT[language]}
+            onPress={handleLogout}
           />
         </View>
       </View>
